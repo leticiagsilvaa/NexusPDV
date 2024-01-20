@@ -17,7 +17,7 @@ public class Produto {
         return valorProd;
     }
 
-    public static int getCodigoProd() {
+    public int getCodigoProd() {
         return codigoProd;
     }
 
