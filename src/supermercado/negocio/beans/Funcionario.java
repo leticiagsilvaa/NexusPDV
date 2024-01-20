@@ -5,15 +5,13 @@ public class Funcionario {
     private int codigoFuncionario;
     private String nomeFuncionario;
     private String cpfFuncionario;
-    private String enderecoFuncionario;
     private static int contadorCodigo = 0;
 
-    public Funcionario(Login login, String nome, String cpf, String endereco){
+    public Funcionario(Login login, String nome, String cpf){
         this.login = login;
         this.codigoFuncionario = gerarNovoCodigo();
         this.nomeFuncionario = nome;
         this.cpfFuncionario = cpf;
-        this.enderecoFuncionario = endereco;
     }
 
     private int gerarNovoCodigo(){
@@ -43,12 +41,11 @@ public class Funcionario {
         this.cpfFuncionario = cpfFuncionario;
     }
 
-    public String getEnderecoFuncionario() {
-        return enderecoFuncionario;
-    }
-
-    public void setEnderecoFuncionario(String enderecoFuncionario) {
-        this.enderecoFuncionario = enderecoFuncionario;
+    @Override
+    public String toString() {
+        return  "Código: " + codigoFuncionario + "\n" +
+                "Nome: " + nomeFuncionario + "\n" +
+                "CPF: " + cpfFuncionario + "\n";
     }
 }
 

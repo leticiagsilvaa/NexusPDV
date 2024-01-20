@@ -2,6 +2,8 @@ package supermercado.dados;
 
 import supermercado.negocio.beans.Funcionario;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class RepositorioFuncionario implements IRepositorio<Funcionario>{
@@ -15,24 +17,36 @@ public class RepositorioFuncionario implements IRepositorio<Funcionario>{
 
     @Override
     public Funcionario[] getAll(){
-        return funcionarios;
+        for(Funcionario funcionario: funcionarios){
+            if(funcionario != null && quantidadeFuncionarios >0){
+                return Arrays.copyOf(funcionarios, quantidadeFuncionarios);
+            }
+        }
+        return null;
     };
 
     @Override
     public Funcionario getOne(int codigo){
         for(int i = 0; i < funcionarios.length; i++){
-            if(codigo == funcionarios[i].getCodigoFuncionario()){
+            if(funcionarios[i] != null && codigo == funcionarios[i].getCodigoFuncionario()){
                 return funcionarios[i];
             }
         }
         return null;
     };
 
-    public Funcionario findByName(String name){
-        for(int i = 0; i < funcionarios.length; i++){
-            if(name.equalsIgnoreCase(funcionarios[i].getNomeFuncionario())){
-                return funcionarios[i];
+    public Funcionario[] findByName(String name){
+        Funcionario encontrado[] = new Funcionario[quantidadeFuncionarios];
+        int funcionarioEncontrado = 0;
+
+        for (int i = 0; i < quantidadeFuncionarios; i++) {
+            if (funcionarios[i] != null && name.equalsIgnoreCase(funcionarios[i].getNomeFuncionario())) {
+                encontrado[funcionarioEncontrado] = funcionarios[i];
+                funcionarioEncontrado++;
             }
+        }
+        if(funcionarioEncontrado > 0){
+            return Arrays.copyOf(encontrado, funcionarioEncontrado);
         }
         return null;
     };
@@ -40,11 +54,6 @@ public class RepositorioFuncionario implements IRepositorio<Funcionario>{
     @Override
     public void add(Funcionario funcionario){
         if(quantidadeFuncionarios < funcionarios.length){
-            for(int i = 0; i < quantidadeFuncionarios; i++){
-                if(funcionarios[i] == null){
-                    funcionarios[i] = funcionario;
-                }
-            }
             funcionarios[quantidadeFuncionarios] = funcionario;
             quantidadeFuncionarios++;
         }
@@ -53,7 +62,7 @@ public class RepositorioFuncionario implements IRepositorio<Funcionario>{
     @Override
     public void delete(int codigo) {
         for(int i = 0; i < funcionarios.length; i++){
-            if(codigo == funcionarios[i].getCodigoFuncionario()) {
+            if(funcionarios[i] != null && codigo == funcionarios[i].getCodigoFuncionario()) {
                 funcionarios[i] = null;
             }
         }
@@ -62,16 +71,13 @@ public class RepositorioFuncionario implements IRepositorio<Funcionario>{
     @Override
     public void update(int codigo) {
         for(int i = 0; i < funcionarios.length; i++){
-            if(codigo == funcionarios[i].getCodigoFuncionario()){
+            if(funcionarios[i] != null && codigo == funcionarios[i].getCodigoFuncionario()){
                 Scanner scanner = new Scanner(System.in);
+                String nome = scanner.next();
+                funcionarios[i].setNomeFuncionario(nome);
                 String cpf = scanner.next();
                 funcionarios[i].setCpfFuncionario(cpf);
-                String nome = scanner.nextLine();
-                funcionarios[i].setNomeFuncionario(nome);
-                String endereco = scanner.nextLine();
-                funcionarios[i].setEnderecoFuncionario(endereco);
             }
         }
-
     }
 }
