@@ -36,4 +36,8 @@ public class Produto {
     public void setValorProd(float valorProd) {
         this.valorProd = valorProd;
     }
+
+    public void setNomeProd(String nomeProd) {
+        this.nomeProd = nomeProd;
+    }
 }
