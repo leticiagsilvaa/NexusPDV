@@ -9,7 +9,7 @@ import java.time.LocalDate;
 public class Main {
     public static void main(String args[]) {
         Login login = new Login("Luffy", "12345678");
-        Funcionario funcionario = new Funcionario(login, 1, "Luffy", "1234", "Rua das Flores, 87" );
+        Funcionario funcionario = new Funcionario(login, "Luffy", "1234", "Rua das Flores, 87" );
         Produto produto = new Produto("Café", "Bebida", 2.50F);
         Produto produto2 = new Produto("Arroz", "Comida", 3.50F);
         System.out.println(produto.getCodigoProd());

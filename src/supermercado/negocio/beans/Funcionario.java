@@ -6,15 +6,19 @@ public class Funcionario {
     private String nomeFuncionario;
     private String cpfFuncionario;
     private String enderecoFuncionario;
+    private static int contadorCodigo = 0;
 
-    public Funcionario(Login login, int codigo, String nome, String cpf, String endereco){
+    public Funcionario(Login login, String nome, String cpf, String endereco){
         this.login = login;
-        this.codigoFuncionario = codigo;
+        this.codigoFuncionario = gerarNovoCodigo();
         this.nomeFuncionario = nome;
         this.cpfFuncionario = cpf;
         this.enderecoFuncionario = endereco;
     }
 
+    private int gerarNovoCodigo(){
+        return ++contadorCodigo;
+    }
     public String getLogin() {
         return login.getLogin();
     }
