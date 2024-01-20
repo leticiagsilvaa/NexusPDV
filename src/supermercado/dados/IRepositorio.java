@@ -4,11 +4,11 @@ import java.util.List;
 
 public interface IRepositorio<N> {
 
-    List<N> getAll();
+    N[] getAll();
 
-    N getOne();
+    N[] getOne();
 
-    List<N> find();
+    N[] find();
 
     void add();
 
