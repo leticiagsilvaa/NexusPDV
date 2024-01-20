@@ -6,14 +6,12 @@ public interface IRepositorio<N> {
 
     N[] getAll();
 
-    N[] getOne();
+    N getOne(int codigo);
 
-    N[] find();
+    void add(N instancia);
 
-    void add();
+    void update(int codigo);
 
-    void update();
-
-    void delete();
+    void delete(int codigo);
 
 }

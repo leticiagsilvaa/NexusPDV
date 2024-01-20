@@ -27,10 +27,6 @@ public class Funcionario {
         return codigoFuncionario;
     }
 
-    public void setCodigoFuncionario(int codigoFuncionario) {
-        this.codigoFuncionario = codigoFuncionario;
-    }
-
     public String getNomeFuncionario() {
         return nomeFuncionario;
     }
