@@ -1,11 +1,13 @@
 package supermercado.negocio.beans;
 
+import supermercado.negocio.exceptions.PagamentoException;
+
 import java.time.LocalDateTime;
 
 public class PagamentoCartao extends Pagamento{
     private String numeroCartao;
 
-    public PagamentoCartao(OrderStatus status, int id, LocalDateTime data, Venda venda, Double valor, String numeroCartao) {
+    public PagamentoCartao(StatusPedido status, int id, LocalDateTime data, Venda venda, Double valor, String numeroCartao) {
         super(status, id, data, venda, valor);
         this.numeroCartao = numeroCartao;
     }
@@ -14,9 +16,9 @@ public class PagamentoCartao extends Pagamento{
         return numeroCartao;
     }
 
-    public void setNumeroCartao(String numeroCartao) throws PagamentoCartaoException {
+    public void setNumeroCartao(String numeroCartao) throws PagamentoException {
         if (numeroCartao == null || numeroCartao.isEmpty()) {
-            throw new PagamentoCartaoException("O número do cartão não pode estar vazio.");
+            throw new PagamentoException("O número do cartão não pode estar vazio.");
         }
         this.numeroCartao = numeroCartao;
     }
@@ -25,11 +27,6 @@ public class PagamentoCartao extends Pagamento{
     public void pagar() {
         
         System.out.println("Pagamento com cartão realizado. Número do cartão: " + numeroCartao);
-        setStatus(OrderStatus.ENTREGUE);  
+        setStatus(StatusPedido.COMPRA_CONCLUIDA);
     }
-}
-
-        
-    }
-
 }

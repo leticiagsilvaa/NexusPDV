@@ -20,7 +20,7 @@ public class RepositorioProduto implements IRepositorio<Produto>{
         int produtoEncontrado = 0;
 
         for (int i = 0; i < quantidadeProdutos; i++) {
-            if (produtos[i] != null && name.equalsIgnoreCase(produtos[i].getNomeProd())) {
+            if (produtos[i] != null && nomeProd.equalsIgnoreCase(produtos[i].getNomeProd())) {
                 encontrado[produtoEncontrado] = produtos[i];
                 produtoEncontrado++;
             }
@@ -67,6 +67,5 @@ public class RepositorioProduto implements IRepositorio<Produto>{
             }
         }
     }
-
     //falta implementar o método update e testar o repositório na classe main
 }

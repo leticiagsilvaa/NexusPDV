@@ -1,5 +1,7 @@
-public class PagamentoExcepiton extends Exception {
-    public MinhaClasseException(String message) {
+package supermercado.negocio.exceptions;
+
+public class PagamentoException extends Exception {
+    public PagamentoException(String message) {
         super( message);
     }
 }

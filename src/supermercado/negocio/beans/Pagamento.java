@@ -2,34 +2,26 @@ package supermercado.negocio.beans;
 
 import java.time.LocalDateTime;
 
-abstract class MinhaClasse {
-    public enum OrderStatus {
-        PENDENTE, PROCESSANDO, EFETUADO , CANCELADO
-    }
+abstract class Pagamento {
 
-    private OrderStatus status;
+    private StatusPedido status;
     private int id;
     private LocalDateTime data;
     private Venda venda;
     private Double valor;
 
-    public MinhaClasse(OrderStatus status, int id, LocalDateTime data, Venda venda, Double valor) {
+    public Pagamento(StatusPedido status, int id, LocalDateTime data, Venda venda, Double valor) {
         this.status = status;
         this.id = id;
         this.data = data;
         this.venda = venda;
         this.valor = valor;
     }
-
-
-    public MinhaClasse() {
-    }
-
-    public OrderStatus getStatus() {
+    public StatusPedido getStatus() {
         return status;
     }
 
-    public void setStatus(OrderStatus status) {
+    public void setStatus(StatusPedido status) {
         this.status = status;
     }
 
@@ -64,9 +56,6 @@ abstract class MinhaClasse {
     public void setValor(Double valor) {
         this.valor = valor;
     }
-
-   
     public abstract void pagar();
 }
 
-}
