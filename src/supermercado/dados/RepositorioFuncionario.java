@@ -2,7 +2,9 @@ package supermercado.dados;
 
 import supermercado.negocio.beans.Funcionario;
 
-import java.lang.reflect.Array;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -68,16 +70,43 @@ public class RepositorioFuncionario implements IRepositorio<Funcionario>{
         }
     }
 
-    @Override
-    public void update(int codigo) {
-        for(int i = 0; i < funcionarios.length; i++){
-            if(funcionarios[i] != null && codigo == funcionarios[i].getCodigoFuncionario()){
-                Scanner scanner = new Scanner(System.in);
-                String nome = scanner.next();
-                funcionarios[i].setNomeFuncionario(nome);
-                String cpf = scanner.next();
-                funcionarios[i].setCpfFuncionario(cpf);
+    public void writer(){
+        String path = "src/supermercado/arquivos/funcionarios.txt";
+        String txt[] = new String[20];
+
+        int numeroLinha = 0;
+
+        for(int j = 0; j < funcionarios.length - 1; j++) {
+            if (funcionarios[j] != null) {
+                txt[numeroLinha] = funcionarios[j].getNomeFuncionario();
+                txt[numeroLinha + 1] = funcionarios[j].getCpfFuncionario();
+                numeroLinha = numeroLinha + 2;
             }
         }
+
+        try(BufferedWriter bw = new BufferedWriter(new FileWriter(path))){
+                for(String linha : txt){
+                    if(linha != null){
+                        bw.write(linha);
+                        bw.newLine();
+                    }
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public void update(int codigo) {
+            for(int i = 0; i < funcionarios.length; i++){
+                if(funcionarios[i] != null && codigo == funcionarios[i].getCodigoFuncionario()) {
+                    Scanner scanner = new Scanner(System.in);
+                    String nome = scanner.nextLine();
+                    funcionarios[i].setNomeFuncionario(nome);
+                    String cpf = scanner.nextLine();
+                    funcionarios[i].setCpfFuncionario(cpf);
+                }
+            }
+            writer();
     }
 }

@@ -67,5 +67,10 @@ public class RepositorioProduto implements IRepositorio<Produto>{
             }
         }
     }
+
+    @Override
+    public void update(int codigo) {
+
+    }
     //falta implementar o método update e testar o repositório na classe main
 }

@@ -7,8 +7,7 @@ public class Funcionario {
     private String cpfFuncionario;
     private static int contadorCodigo = 0;
 
-    public Funcionario(Login login, String nome, String cpf){
-        this.login = login;
+    public Funcionario(String nome, String cpf){
         this.codigoFuncionario = gerarNovoCodigo();
         this.nomeFuncionario = nome;
         this.cpfFuncionario = cpf;
