@@ -40,4 +40,8 @@ public class Produto {
     public void setNomeProd(String nomeProd) {
         this.nomeProd = nomeProd;
     }
+
+    public void setCategoriaProd(String categoriaProd) {
+        this.categoriaProd = categoriaProd;
+    }
 }

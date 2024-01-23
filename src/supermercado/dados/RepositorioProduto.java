@@ -70,7 +70,17 @@ public class RepositorioProduto implements IRepositorio<Produto>{
 
     @Override
     public void update(int codigo) {
-
+        for(int i = 0; i < produtos.length; i++){
+            if(produtos[i] != null && codigo == produtos[i].getCodigoProd()) {
+                Scanner scanner = new Scanner(System.in);
+                String nome = scanner.nextLine();
+                produtos[i].setNomeProd(nome);
+                String valor = scanner.nextLine();
+                produtos[i].setValorProd(Float.parseFloat(valor));
+                String categoria = scanner.nextLine();
+                produtos[i].setCategoriaProd(categoria);
+            }
+        }
     }
-    //falta implementar o método update e testar o repositório na classe main
+
 }
