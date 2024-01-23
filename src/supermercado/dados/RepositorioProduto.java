@@ -3,6 +3,9 @@ package supermercado.dados;
 import supermercado.negocio.beans.Funcionario;
 import supermercado.negocio.beans.Produto;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -57,6 +60,7 @@ public class RepositorioProduto implements IRepositorio<Produto>{
             produtos[quantidadeProdutos] = produto;
             quantidadeProdutos++;
         }
+        updateWriter();
     }
 
     @Override
@@ -66,8 +70,33 @@ public class RepositorioProduto implements IRepositorio<Produto>{
                 produtos[i] = null;
             }
         }
+        updateWriter();
     }
+    public void updateWriter(){
+        String path = "src/supermercado/arquivos/produtos.txt";
+        String txt[] = new String[20];
 
+        int numeroLinha = 0;
+
+        for(int j = 0; j < produtos.length; j++) {
+            if (produtos[j] != null) {
+                txt[numeroLinha] = produtos[j].getNomeProd();
+                txt[numeroLinha + 1] = produtos[j].getValorProd(Float.parseFloat(valor));
+                numeroLinha = numeroLinha + 2;
+            }
+        }
+
+        try(BufferedWriter bw = new BufferedWriter(new FileWriter(path))){
+            for(String linha : txt){
+                if(linha != null){
+                    bw.write(linha);
+                    bw.newLine();
+                }
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
     @Override
     public void update(int codigo) {
         for(int i = 0; i < produtos.length; i++){
@@ -81,6 +110,7 @@ public class RepositorioProduto implements IRepositorio<Produto>{
                 produtos[i].setCategoriaProd(categoria);
             }
         }
+        updateWriter();
     }
 
 }
