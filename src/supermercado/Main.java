@@ -16,7 +16,7 @@ public class Main {
     public static void main(String args[]) {
 
         //INSTANCIAÇÃO E LEITURA DE ARQUIVO DE FUNCIONÁRIOS
-        RepositorioFuncionario repo = new RepositorioFuncionario(20);
+        RepositorioFuncionario repo = new RepositorioFuncionario(10);
 
         String path = "src/supermercado/arquivos/funcionarios.txt";
 
@@ -40,11 +40,12 @@ public class Main {
         System.out.println(Arrays.toString(repo.getAll()));
         System.out.println("FUNCIONARIO COD 2: ");
         System.out.println(repo.getOne(2));
+        repo.delete(5);
         System.out.println("FUNCIONARIOS CHAMADOS MARIA: ");
-        System.out.println(Arrays.toString(repo.findByName("Nicolas Araújo")));
-        //ATUALIZAÇÃO PRECISA MEXER NO ARQUIVO
+        System.out.println(Arrays.toString(repo.findByName("Nicollas Albert")));
         System.out.println("DIGITE NOME E DEPOIS CPF PARA ATUALIZAÇÃO: ");
-        repo.update(3);
         System.out.println("TODOS: ");
         System.out.println(Arrays.toString(repo.getAll()));
+        repo.add(new Funcionario("Gerard Way", "345.456.324-00"));
+        repo.add(new Funcionario("Frank Iero", "647.234.345-45"));
 }}

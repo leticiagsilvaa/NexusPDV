@@ -59,6 +59,7 @@ public class RepositorioFuncionario implements IRepositorio<Funcionario>{
             funcionarios[quantidadeFuncionarios] = funcionario;
             quantidadeFuncionarios++;
         }
+        updateWriter();
     };
 
     @Override
@@ -68,15 +69,16 @@ public class RepositorioFuncionario implements IRepositorio<Funcionario>{
                 funcionarios[i] = null;
             }
         }
+        updateWriter();
     }
 
-    public void writer(){
+    public void updateWriter(){
         String path = "src/supermercado/arquivos/funcionarios.txt";
         String txt[] = new String[20];
 
         int numeroLinha = 0;
 
-        for(int j = 0; j < funcionarios.length - 1; j++) {
+        for(int j = 0; j < funcionarios.length; j++) {
             if (funcionarios[j] != null) {
                 txt[numeroLinha] = funcionarios[j].getNomeFuncionario();
                 txt[numeroLinha + 1] = funcionarios[j].getCpfFuncionario();
@@ -107,6 +109,6 @@ public class RepositorioFuncionario implements IRepositorio<Funcionario>{
                     funcionarios[i].setCpfFuncionario(cpf);
                 }
             }
-            writer();
+        updateWriter();
     }
 }
