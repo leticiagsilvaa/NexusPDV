@@ -1,12 +1,15 @@
 package supermercado;
 
+import org.w3c.dom.ls.LSOutput;
 import supermercado.dados.RepositorioFuncionario;
 import supermercado.dados.RepositorioProduto;
 import supermercado.negocio.beans.Funcionario;
 import supermercado.negocio.beans.Produto;
+import supermercado.negocio.beans.Estoque;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.sql.SQLOutput;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -78,4 +81,10 @@ public class Main {
         System.out.println("TODOS: ");
         repoProd.update(1);
         System.out.println(Arrays.toString(repoProd.getAll()));
+
+        //Teste Estoque
+        Estoque estoque = new Estoque(repositorioProduto);
+        System.out.println("Produtos no estoque após adição:");
+        estoque.listarProdutosNoEstoque();
+
 }}
