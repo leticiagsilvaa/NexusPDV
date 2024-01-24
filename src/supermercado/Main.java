@@ -4,6 +4,7 @@ import supermercado.dados.RepositorioFuncionario;
 import supermercado.dados.RepositorioProduto;
 import supermercado.negocio.beans.Funcionario;
 import supermercado.negocio.beans.Produto;
+import supermercado.negocio.beans.Estoque;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -78,5 +79,10 @@ public class Main {
         System.out.println("TODOS: ");
         repoProd.update(1);
         System.out.println(Arrays.toString(repoProd.getAll()));
-    }
-}
+
+        //Teste Estoque
+        Estoque estoque = new Estoque(repoProd);
+        System.out.println("Produtos no estoque após adição:");
+        estoque.listarProdutosNoEstoque();
+
+}}
