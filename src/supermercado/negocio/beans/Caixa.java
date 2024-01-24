@@ -32,7 +32,7 @@ public class Caixa {
     public void finalizarVenda() {
         NotaFiscal nota = new NotaFiscal(this.idCaixa, this.loginFuncionario, this.venda);
         nota.gerarNota();
-        bd.salvarVenda(venda);
+        salvarVenda(venda);
     }
      */
 
