@@ -21,7 +21,7 @@ public class Main {
 
         String path = "src/supermercado/arquivos/funcionarios.txt";
 
-        try(BufferedReader br = new BufferedReader(new FileReader(path))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(path))) {
             String line = br.readLine();
 
             while (line != null) {
@@ -31,7 +31,7 @@ public class Main {
                 repo.add(new Funcionario(first_parameter, second_parameter));
                 line = br.readLine();
             }
-        } catch(IOException e){
+        } catch (IOException e) {
             System.out.println(e.getMessage());
         }
 
@@ -40,7 +40,7 @@ public class Main {
 
         String path_produtos = "src/supermercado/arquivos/produtos.txt";
 
-        try(BufferedReader br = new BufferedReader(new FileReader(path_produtos))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(path_produtos))) {
             String line = br.readLine();
 
             while (line != null) {
@@ -52,7 +52,7 @@ public class Main {
                 repoProd.add(new Produto(first_parameter, second_parameter, Double.parseDouble(third_parameter)));
                 line = br.readLine();
             }
-        } catch(IOException e){
+        } catch (IOException e) {
             System.out.println(e.getMessage());
         }
 
@@ -78,4 +78,5 @@ public class Main {
         System.out.println("TODOS: ");
         repoProd.update(1);
         System.out.println(Arrays.toString(repoProd.getAll()));
-}}
+    }
+}

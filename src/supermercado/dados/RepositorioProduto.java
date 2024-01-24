@@ -9,16 +9,16 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class RepositorioProduto implements IRepositorio<Produto>{
+public class RepositorioProduto implements IRepositorio<Produto> {
     private Produto produtos[];
     private int quantidadeProdutos;
 
-    public RepositorioProduto(int numeroMaximo){
+    public RepositorioProduto(int numeroMaximo) {
         produtos = new Produto[numeroMaximo];
         quantidadeProdutos = 0;
     }
 
-    public Produto[] findByName(String nomeProd){
+    public Produto[] findByName(String nomeProd) {
         Produto encontrado[] = new Produto[quantidadeProdutos];
         int produtoEncontrado = 0;
 
@@ -28,11 +28,13 @@ public class RepositorioProduto implements IRepositorio<Produto>{
                 produtoEncontrado++;
             }
         }
-        if(produtoEncontrado > 0){
+        if (produtoEncontrado > 0) {
             return Arrays.copyOf(encontrado, produtoEncontrado);
         }
         return null;
-    };
+    }
+
+    ;
 
     @Override
     public Produto[] getAll() {
@@ -46,8 +48,8 @@ public class RepositorioProduto implements IRepositorio<Produto>{
 
     @Override
     public Produto getOne(int codigo) {
-        for (int i = 0; i < produtos.length; i++){
-            if (produtos[i] != null && codigo == produtos[i].getCodigoProd()){
+        for (int i = 0; i < produtos.length; i++) {
+            if (produtos[i] != null && codigo == produtos[i].getCodigoProd()) {
                 return produtos[i];
             }
         }
@@ -55,8 +57,8 @@ public class RepositorioProduto implements IRepositorio<Produto>{
     }
 
     @Override
-    public void add(Produto produto){
-        if(quantidadeProdutos < produtos.length){
+    public void add(Produto produto) {
+        if (quantidadeProdutos < produtos.length) {
             produtos[quantidadeProdutos] = produto;
             quantidadeProdutos++;
         }
@@ -65,20 +67,21 @@ public class RepositorioProduto implements IRepositorio<Produto>{
 
     @Override
     public void delete(int codigo) {
-        for(int i = 0; i < produtos.length; i++){
-            if(produtos[i] != null && codigo == produtos[i].getCodigoProd()) {
+        for (int i = 0; i < produtos.length; i++) {
+            if (produtos[i] != null && codigo == produtos[i].getCodigoProd()) {
                 produtos[i] = null;
             }
         }
         updateWriter();
     }
-    public void updateWriter(){
+
+    public void updateWriter() {
         String path = "src/supermercado/arquivos/produtosAtualizados.txt";
         String txt[] = new String[150];
 
         int numeroLinha = 0;
 
-        for(int j = 0; j < produtos.length; j++) {
+        for (int j = 0; j < produtos.length; j++) {
             if (produtos[j] != null) {
                 txt[numeroLinha] = produtos[j].getNomeProd();
                 txt[numeroLinha + 1] = produtos[j].getCategoriaProd();
@@ -87,9 +90,9 @@ public class RepositorioProduto implements IRepositorio<Produto>{
             }
         }
 
-        try(BufferedWriter bw = new BufferedWriter(new FileWriter(path))){
-            for(String linha : txt){
-                if(linha != null){
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(path))) {
+            for (String linha : txt) {
+                if (linha != null) {
                     bw.write(linha);
                     bw.newLine();
                 }
@@ -98,11 +101,12 @@ public class RepositorioProduto implements IRepositorio<Produto>{
             throw new RuntimeException(e);
         }
     }
+
     @Override
     public void update(int codigo) {
         Scanner scanner = new Scanner(System.in);
-        for(int i = 0; i < produtos.length; i++){
-            if(produtos[i] != null && codigo == produtos[i].getCodigoProd()) {
+        for (int i = 0; i < produtos.length; i++) {
+            if (produtos[i] != null && codigo == produtos[i].getCodigoProd()) {
                 String nome = scanner.nextLine();
                 produtos[i].setNomeProd(nome);
                 String categoria = scanner.nextLine();
