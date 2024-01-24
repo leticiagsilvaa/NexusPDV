@@ -28,7 +28,6 @@ public class Produto {
     public String getCategoriaProd() {
         return categoriaProd;
     }
-
     public String getNomeProd() {
         return nomeProd;
     }
@@ -45,3 +44,4 @@ public class Produto {
         this.categoriaProd = categoriaProd;
     }
 }
+
