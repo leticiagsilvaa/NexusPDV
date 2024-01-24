@@ -56,7 +56,6 @@ public class Main {
             System.out.println(e.getMessage());
         }
 
-
         //REPOSITORIO
         System.out.println("TESTE DE REPOSITORIO");
         System.out.println("TODOS: ");
@@ -73,8 +72,8 @@ public class Main {
         System.out.println(Arrays.toString(repoProd.getAll()));
         System.out.println("PRODUTO COD 2: ");
         System.out.println(repoProd.getOne(2));
-        System.out.println("PRODUTOS CHAMADO MASSA DE TRIGO: ");
-        System.out.println(Arrays.toString(repoProd.findByName("Massa de Trigo Integral")));
+        System.out.println("PRODUTOS CHAMADO ARROZ: ");
+        System.out.println(Arrays.toString(repoProd.findByName("Arroz")));
         System.out.println("DIGITE NOME E DESCRIÇÃO E PREÇO PARA ATUALIZAÇÃO: ");
         System.out.println("TODOS: ");
         repoProd.update(1);

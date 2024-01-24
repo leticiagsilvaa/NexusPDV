@@ -82,7 +82,7 @@ public class RepositorioProduto implements IRepositorio<Produto>{
             if (produtos[j] != null) {
                 txt[numeroLinha] = produtos[j].getNomeProd();
                 txt[numeroLinha + 1] = produtos[j].getCategoriaProd();
-                txt[numeroLinha + 2] = String.valueOf(produtos[j].getValorProd());
+                txt[numeroLinha + 2] = produtos[j].getValorProd().toString();
                 numeroLinha = numeroLinha + 3;
             }
         }
@@ -105,10 +105,10 @@ public class RepositorioProduto implements IRepositorio<Produto>{
             if(produtos[i] != null && codigo == produtos[i].getCodigoProd()) {
                 String nome = scanner.nextLine();
                 produtos[i].setNomeProd(nome);
-                Double valor = scanner.nextDouble();
-                produtos[i].setValorProd(valor);
                 String categoria = scanner.nextLine();
                 produtos[i].setCategoriaProd(categoria);
+                Double valor = scanner.nextDouble();
+                produtos[i].setValorProd(valor);
             }
         }
         updateWriter();
