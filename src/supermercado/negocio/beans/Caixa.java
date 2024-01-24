@@ -1,6 +1,7 @@
 package supermercado.negocio.beans;
 
 public class Caixa {
+    /*
     private static int totalCaixa;
     private final int idCaixa;
 
@@ -33,5 +34,7 @@ public class Caixa {
         nota.gerarNota();
         bd.salvarVenda(venda);
     }
+     */
 
 }
+

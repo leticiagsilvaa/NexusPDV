@@ -4,10 +4,10 @@ public class Produto {
     private String nomeProd;
     private int codigoProd;
     private String categoriaProd;
-    private float valorProd;
+    private Double valorProd;
     private static int totalProdutos = 0;
 
-    public Produto(String nomeProd, String categoriaProd, float valorProd){
+    public Produto(String nomeProd, String categoriaProd, Double valorProd){
         this.codigoProd = gerarNovoCodigo();
         this.nomeProd = nomeProd;
         this.categoriaProd = categoriaProd;
@@ -17,7 +17,7 @@ public class Produto {
     private int gerarNovoCodigo(){
         return ++totalProdutos;
     }
-    public float getValorProd() {
+    public Double getValorProd() {
         return valorProd;
     }
 
@@ -32,7 +32,7 @@ public class Produto {
         return nomeProd;
     }
 
-    public void setValorProd(float valorProd) {
+    public void setValorProd(Double valorProd) {
         this.valorProd = valorProd;
     }
 
@@ -42,6 +42,13 @@ public class Produto {
 
     public void setCategoriaProd(String categoriaProd) {
         this.categoriaProd = categoriaProd;
+    }
+
+    @Override
+    public String toString() {
+        return  "Nome: " + nomeProd + "\n" +
+                "Descrição: " + categoriaProd + "\n" +
+                "Valor: " + valorProd + "\n";
     }
 }
 

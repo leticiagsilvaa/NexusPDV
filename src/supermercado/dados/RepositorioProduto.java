@@ -73,16 +73,17 @@ public class RepositorioProduto implements IRepositorio<Produto>{
         updateWriter();
     }
     public void updateWriter(){
-        String path = "src/supermercado/arquivos/produtos.txt";
-        String txt[] = new String[20];
+        String path = "src/supermercado/arquivos/produtosAtualizados.txt";
+        String txt[] = new String[150];
 
         int numeroLinha = 0;
 
         for(int j = 0; j < produtos.length; j++) {
             if (produtos[j] != null) {
                 txt[numeroLinha] = produtos[j].getNomeProd();
-                txt[numeroLinha + 1] = produtos[j].getValorProd(Float.parseFloat(valor));
-                numeroLinha = numeroLinha + 2;
+                txt[numeroLinha + 1] = produtos[j].getCategoriaProd();
+                txt[numeroLinha + 2] = String.valueOf(produtos[j].getValorProd());
+                numeroLinha = numeroLinha + 3;
             }
         }
 
@@ -99,13 +100,13 @@ public class RepositorioProduto implements IRepositorio<Produto>{
     }
     @Override
     public void update(int codigo) {
+        Scanner scanner = new Scanner(System.in);
         for(int i = 0; i < produtos.length; i++){
             if(produtos[i] != null && codigo == produtos[i].getCodigoProd()) {
-                Scanner scanner = new Scanner(System.in);
                 String nome = scanner.nextLine();
                 produtos[i].setNomeProd(nome);
-                String valor = scanner.nextLine();
-                produtos[i].setValorProd(Float.parseFloat(valor));
+                Double valor = scanner.nextDouble();
+                produtos[i].setValorProd(valor);
                 String categoria = scanner.nextLine();
                 produtos[i].setCategoriaProd(categoria);
             }

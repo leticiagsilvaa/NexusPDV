@@ -1,0 +1,99 @@
+Molho de Tomate Artesanal
+Molho de tomate feito com tomates frescos
+9.99
+Massa de Trigo Integral
+Massa de trigo integral
+5.49
+Queijo Parmesão Envelhecido
+Queijo parmesão premium, envelhecido para um sabor intenso e acentuado.
+15.99
+Granola de Frutas Tropicais
+Granola crocante com pedaços de frutas tropicais e castanhas.
+12.49
+Barra de Chocolate Amargo com Amêndoas
+Barra de chocolate amargo com amêndoas inteiras, uma combinação irresistível.
+7.99
+Mel Puro de Flor de Laranjeira
+Mel suave e perfumado, colhido das flores de laranjeira.
+19.99
+Chips de Batata-Doce Assados
+Chips de batata-doce assados, uma opção saudável e deliciosa.
+8.99
+Mix de Castanhas Premium
+Mix de castanhas premium, incluindo nozes, amêndoas e castanhas de caju.
+14.99
+Arroz Basmati Orgânico
+Arroz basmati cultivado organicamente, com grãos longos e aroma característico.
+6.99
+Molho de Pimenta Habanero Artesanal
+Molho de pimenta habanero feito artesanalmente, proporcionando um toque picante único.
+11.49
+Vinagre Balsâmico Envelhecido
+Vinagre balsâmico envelhecido, ideal para realçar sabores em saladas e pratos gourmet.
+16.99
+Mix de Ervas Finas para Tempero
+Mix de ervas finas desidratadas para temperar suas receitas com sofisticação.
+4.99
+Azeite de Oliva Extra Virgem Premium
+Azeite de oliva extra virgem de qualidade premium, prensado a frio.
+22.99
+Pão Integral Multigrãos
+Pão integral com uma mistura de grãos, ideal para sanduíches saudáveis.
+5.99
+Café Gourmet Torrado Médio
+Café gourmet de torra média, com aroma e sabor intensos.
+18.99
+Chá Verde com Menta Orgânica
+Chá verde orgânico com toque refrescante de menta.
+9.49
+Geléia de Morango Artesanal
+Geléia de morango feita artesanalmente, com pedaços de frutas.
+7.99
+Sopa de Lentilhas com Curry
+Sopa de lentilhas com um toque de curry, pronta para aquecer seu dia.
+12.99
+Barra de Cereal com Frutas Secas
+Barra de cereal nutritiva, repleta de frutas secas e sementes.
+3.99
+Biscoitos de Aveia e Passas
+Biscoitos de aveia com passas, perfeitos para um lanche saudável.
+6.49
+Sorvete de Baunilha com Chocolate
+Uma deliciosa combinação de sorvete de baunilha com pedaços generosos de chocolate.
+14.99
+Cereal Matinal de Frutas
+Cereal matinal crocante com uma mistura irresistível de frutas secas e flocos de aveia.
+10.49
+Iogurte Grego Natural
+Iogurte grego cremoso, perfeito para acompanhar frutas ou ser consumido puro.
+7.99
+Barras de Proteína de Amêndoas
+Barras de proteína energéticas, repletas de amêndoas e ingredientes nutritivos.
+16.99
+Suco de Manga Refrescante
+Suco natural de manga, refrescante e cheio de sabor tropical.
+5.99
+Queijo Cottage com Ervas Finas
+Queijo cottage leve e fresco, com um toque de ervas finas para realçar o sabor.
+9.49
+Pasta de Amendoim Orgânica
+Pasta de amendoim orgânica, uma opção saudável e deliciosa para lanches.
+11.99
+Salmão Defumado Artesanal
+Salmão defumado artesanalmente, com um sabor único e textura delicada.
+22.99
+Água de Coco Natural
+Água de coco 100% natural, uma bebida refrescante e hidratante.
+4.49
+Muffins de Blueberry
+Muffins macios recheados com blueberries frescas, perfeitos para o café da manhã.
+8.99
+Hummus de Beterraba
+Hummus cremoso de beterraba, ideal como dip ou acompanhamento saudável.
+6.49
+Chips de Banana Desidratada
+Chips de banana desidratada, uma opção de lanche crocante e natural.
+3.99
+Pizza Vegetariana com Massa Integral
+Pizza vegetariana com uma deliciosa massa integral e uma variedade de vegetais frescos.
+18.99
