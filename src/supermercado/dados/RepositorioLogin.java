@@ -1,8 +1,10 @@
 package supermercado.dados;
 
+import supermercado.UI;
 import supermercado.negocio.beans.Login;
 import java.util.Arrays;
 import java.util.Scanner;
+import supermercado.UI.*;
 
 public class RepositorioLogin implements IRepositorio<Login>{
     private int quantidadeLogins;
@@ -26,25 +28,35 @@ public class RepositorioLogin implements IRepositorio<Login>{
     @Override
     public Login getOne(int codigo){
         for(int i = 0; i < logins.length; i++){
-            if(logins[i] != null && codigo == logins[i].getCodigoLogin()){
+            if(logins[i] != null && codigo == logins[i].getCodigo()){
                 return logins[i];
             }
         }
         return null;
     };
 
-    public Login[] findByUser(String login){
-        Login encontrado[] = new Login[quantidadeLogins];
-        int loginEncontrado = 0;
+    public Boolean loginMatch(){
+       Login data = UI.systemLogin();
+       for(Login log : logins){
+           if(log.equals(data)){
+               return true;
+           }
+        }
+       return false;
+    }
+
+    public Login[] findByUser(int login){
+        Login found[] = new Login[quantidadeLogins];
+        int foundLogin = 0;
 
         for (int i = 0; i < quantidadeLogins; i++) {
-            if (logins[i] != null && login.equalsIgnoreCase(logins[i].getLogin())) {
-                encontrado[loginEncontrado] = logins[i];
-                loginEncontrado++;
+            if (logins[i] != null && login != logins[i].getCodigo()) {
+                found[foundLogin] = logins[i];
+                foundLogin++;
             }
         }
-        if(loginEncontrado > 0){
-            return Arrays.copyOf(encontrado, loginEncontrado);
+        if(foundLogin > 0){
+            return Arrays.copyOf(found, foundLogin);
         }
         return null;
     };
@@ -60,7 +72,7 @@ public class RepositorioLogin implements IRepositorio<Login>{
     @Override
     public void delete(int codigo) {
         for(int i = 0; i < logins.length; i++){
-            if(logins[i] != null && codigo == logins[i].getCodigoLogin()) {
+            if(logins[i] != null && codigo == logins[i].getCodigo()) {
                 logins[i] = null;
             }
         }
@@ -69,7 +81,7 @@ public class RepositorioLogin implements IRepositorio<Login>{
     @Override
     public void update(int codigo) {
         for(int i = 0; i < logins.length; i++){
-            if(logins[i] != null && codigo == logins[i].getCodigoLogin()){
+            if(logins[i] != null && codigo == logins[i].getCodigo()){
                 //ver como será o update login
             }
         }

@@ -3,6 +3,8 @@ import supermercado.dados.RepositorioProduto;
 import java.util.Arrays;
 
 public class Estoque {
+
+    /*
     private RepositorioProduto repositorioProduto;
 
     public Estoque(RepositorioProduto repositorioProduto) {
@@ -55,4 +57,5 @@ public class Estoque {
     }
 
 
+     */
 }
