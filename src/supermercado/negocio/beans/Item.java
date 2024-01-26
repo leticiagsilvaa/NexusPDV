@@ -1,11 +1,11 @@
 package supermercado.negocio.beans;
 
-public class ItemDoCarrinho {
+public class Item {
 
     private Produto produto;
     private int quantidadeItem;
 
-    public ItemDoCarrinho(Produto produto, int quantidadeItem) {
+    public Item(Produto produto, int quantidadeItem) {
         this.produto = produto;
         this.quantidadeItem = quantidadeItem;
     }
@@ -29,6 +29,7 @@ public class ItemDoCarrinho {
     public Double calcularValorParcial(){
         return produto.getValorProd() * quantidadeItem;
     }
+
 
     @Override
     public String toString() {

@@ -1,62 +1,72 @@
 package supermercado.negocio.beans;
 
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.List;
 
 public class Venda {
 
     private final int idVenda;
     private static int totalIdVenda;
-    private final Collection listaProdutos = new ArrayList();
-    private Double valorTotalVenda = 0.0;
+    private final List<Produto> listaItens;
+    private Double subtotal = 0.0;
     private Double troco;
     private Pagamento pagamento;
     private int idCaixa;
+    private Funcionario funcionario;
 
-    public Venda(int idCaixa){
+    public Venda(int idCaixa, String loginFuncionario){
         Venda.totalIdVenda++;
         this.idVenda =  totalIdVenda;
         this.idCaixa = idCaixa;
+        this.listaItens = new ArrayList<>();
+    }
+
+    public Funcionario getFuncionario() {
+        return funcionario;
     }
 
     public int getIdVenda() {
         return idVenda;
     }
 
-    public Collection getListaProdutos(){
-        return this.listaProdutos;
+    public List<Produto> getListaItens(){
+        return this.listaItens;
     }
     public int getIdCaixa(){
         return this.idCaixa;
     }
 
-    public Double getValorTotalVenda(){
-        return this.valorTotalVenda;
+    public Double getSubtotal(){
+        return this.subtotal;
     }
 
-/*
-    public void adicionarProdutoVenda(Item item) {
-        getListaProdutos.add(item);
-        valorTotalVenda += item.getValorTotalVenda();
+
+    public void adicionarItemLista(Produto produto, int quantidade) {
+        Item item = new Item(produto, quantidade);
+        listaItens.add(item.getProduto());
+        subtotal += item.calcularValorParcial();
     }
 
-    public void removerProdutoVenda(Item item) {
-        getListaProdutos.remove(item);
-        valorTotal -= item.getValorTotalVenda();
+    public void removerItem(Item item) {
+        if (listaItens.contains(item)) {
+            listaItens.remove(item);
+            subtotal -= item.calcularValorParcial();
+        } else {
+            System.out.println("O item não está na lista da venda.");
+        }
     }
 
-    public Double getValorTotal() {
-        return this.valorTotal;
+
+    public Double calcularTotal() {
+        // descontos???
+        return subtotal;
     }
 
     public Double getTroco() {
         return this.troco;
     }
 
-    public Double getIdVenda() {
-        return this.idVenda;
-    }
 
     // falta finalizar e calcular troco
-*/
+
 }

@@ -1,12 +1,16 @@
 package supermercado.negocio.beans;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Caixa {
-    /*
+
     private static int totalCaixa;
     private final int idCaixa;
 
     private Venda venda;
     private String loginFuncionario;
+    private Funcionario funcionario;
 
     public Caixa(){
         Caixa.totalCaixa++;
@@ -30,11 +34,22 @@ public class Caixa {
     }
 
     public void finalizarVenda() {
-        NotaFiscal nota = new NotaFiscal(this.idCaixa, this.loginFuncionario, this.venda);
-        nota.gerarNota();
-        salvarVenda(venda);
+        List<Item> itens = new ArrayList<>();
+
+        for (Produto produto : this.venda.getListaItens()) {
+            Item item = new Item(produto, 1);  // Assumindo que a quantidade desejada é 1
+            itens.add(item);
+        }
+
+        NotaFiscal nota = new NotaFiscal(this.idCaixa, this.loginFuncionario, itens);
+        nota.gerarNota(this.venda);
+
+        // Reiniciar a venda ou definir como null
+        this.venda = null;
     }
-     */
+
+
+
 
 }
 
