@@ -6,15 +6,11 @@ import java.util.Objects;
 
 public class Login{
     private int codigo;
-
     private String login;
     private String senha;
     private static int contadorCodigo = 0;
 
     public Login(String login, String senha){
-        if(senha.length() < 8){
-            throw new SenhaInvalidaException("Senha precisa ter mais de 8 dígitos.");
-        }
         this.login = login;
         this.senha = senha;
         this.codigo = gerarNovoCodigo();
@@ -32,6 +28,8 @@ public class Login{
         return login;
     }
 
+    public String getSenha(){return senha;}
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -43,5 +41,11 @@ public class Login{
     @Override
     public int hashCode() {
         return Objects.hash(login, senha);
+    }
+
+    @Override
+    public String toString() {
+        return "Login: " + login + '\n' +
+                "Senha: " + senha + '\n';
     }
 }

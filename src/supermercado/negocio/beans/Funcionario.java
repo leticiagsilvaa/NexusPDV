@@ -7,10 +7,11 @@ public class Funcionario {
     private String cpfFuncionario;
     private static int contadorCodigo = 0;
 
-    public Funcionario(String nome, String cpf){
+    public Funcionario(String nome, String cpf, Login login){
         this.codigoFuncionario = gerarNovoCodigo();
         this.nomeFuncionario = nome;
         this.cpfFuncionario = cpf;
+        this.login = login;
     }
 
     private int gerarNovoCodigo(){
@@ -18,6 +19,10 @@ public class Funcionario {
     }
     public String getLogin() {
         return login.getLogin();
+    }
+
+    public String getSenha(){
+        return login.getSenha();
     }
 
     public int getCodigoFuncionario() {
@@ -44,7 +49,8 @@ public class Funcionario {
     public String toString() {
         return  "Código: " + codigoFuncionario + "\n" +
                 "Nome: " + nomeFuncionario + "\n" +
-                "CPF: " + cpfFuncionario + "\n";
+                "CPF: " + cpfFuncionario + "\n" +
+                "Login: " + getLogin() + "\n";
     }
 }
 

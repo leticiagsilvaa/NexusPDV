@@ -7,22 +7,21 @@ public class Caixa {
 
     private static int totalCaixa;
     private final int idCaixa;
-
     private Venda venda;
-    private String loginFuncionario;
-    private Funcionario funcionario;
+    private String nomeFuncionario;
 
-    public Caixa(){
+    public Caixa(String nomeFuncionario){
         Caixa.totalCaixa++;
         idCaixa = totalCaixa;
+        this.nomeFuncionario = nomeFuncionario;
     }
 
-    public void setLogin(String login){
-        this.loginFuncionario = login;
+    public void setNomeFuncionario(String nome){
+        this.nomeFuncionario = nomeFuncionario;
     }
 
     public void novaVenda(){
-        this.venda = new Venda(this.idCaixa, this.loginFuncionario);
+        this.venda = new Venda(this.idCaixa, this.nomeFuncionario);
     }
 
     public Venda getVenda(){
@@ -41,7 +40,7 @@ public class Caixa {
             itens.add(item);
         }
 
-        NotaFiscal nota = new NotaFiscal(this.idCaixa, this.loginFuncionario, itens);
+        NotaFiscal nota = new NotaFiscal(this.idCaixa, this.nomeFuncionario, itens);
         nota.gerarNota(this.venda);
 
         // Reiniciar a venda ou definir como null

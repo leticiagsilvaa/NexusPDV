@@ -35,28 +35,20 @@ public class RepositorioLogin implements IRepositorio<Login>{
         return null;
     };
 
-    public Boolean loginMatch(){
-       Login data = UI.systemLogin();
-       for(Login log : logins){
-           if(log.equals(data)){
-               return true;
+    public String loginMatch(Login login){
+       for(int i = 0; i < quantidadeLogins; i++){
+           if(logins[i] != null && login.equals(logins[i])){
+               return logins[i].getLogin();
            }
         }
-       return false;
+       throw new RuntimeException("Login ou senha incorretos. Tente novamente");
     }
 
-    public Login[] findByUser(int login){
-        Login found[] = new Login[quantidadeLogins];
-        int foundLogin = 0;
-
+    public Login findByUser(String login){
         for (int i = 0; i < quantidadeLogins; i++) {
-            if (logins[i] != null && login != logins[i].getCodigo()) {
-                found[foundLogin] = logins[i];
-                foundLogin++;
+            if (logins[i] != null && login.equals(logins[i].getLogin())) {
+                return logins[i];
             }
-        }
-        if(foundLogin > 0){
-            return Arrays.copyOf(found, foundLogin);
         }
         return null;
     };

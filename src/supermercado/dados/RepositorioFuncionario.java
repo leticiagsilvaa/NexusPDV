@@ -1,6 +1,7 @@
 package supermercado.dados;
 
 import supermercado.negocio.beans.Funcionario;
+import supermercado.negocio.beans.Login;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -42,13 +43,22 @@ public class RepositorioFuncionario implements IRepositorio<Funcionario>{
         int funcionarioEncontrado = 0;
 
         for (int i = 0; i < quantidadeFuncionarios; i++) {
-            if (funcionarios[i] != null && name.equalsIgnoreCase(funcionarios[i].getNomeFuncionario())) {
+            if (funcionarios[i] != null && name.equalsIgnoreCase(funcionarios[i].getLogin())) {
                 encontrado[funcionarioEncontrado] = funcionarios[i];
                 funcionarioEncontrado++;
             }
         }
         if(funcionarioEncontrado > 0){
             return Arrays.copyOf(encontrado, funcionarioEncontrado);
+        }
+        return null;
+    };
+
+    public Funcionario findByUser(String login){
+        for (int i = 0; i < quantidadeFuncionarios; i++) {
+            if (funcionarios[i] != null && funcionarios[i].getLogin().equals(login)){
+                return funcionarios[i];
+            }
         }
         return null;
     };
@@ -74,7 +84,7 @@ public class RepositorioFuncionario implements IRepositorio<Funcionario>{
 
     public void updateWriter(){
         String path = "src/supermercado/arquivos/funcionarios.txt";
-        String txt[] = new String[20];
+        String txt[] = new String[39];
 
         int numeroLinha = 0;
 
@@ -82,7 +92,9 @@ public class RepositorioFuncionario implements IRepositorio<Funcionario>{
             if (funcionarios[j] != null) {
                 txt[numeroLinha] = funcionarios[j].getNomeFuncionario();
                 txt[numeroLinha + 1] = funcionarios[j].getCpfFuncionario();
-                numeroLinha = numeroLinha + 2;
+                txt[numeroLinha + 2] = funcionarios[j].getLogin();
+                txt[numeroLinha + 3] = funcionarios[j].getSenha();
+                numeroLinha = numeroLinha + 4;
             }
         }
 

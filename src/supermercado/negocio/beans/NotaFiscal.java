@@ -26,7 +26,7 @@ public class NotaFiscal {
         System.out.println("Nota Fiscal");
         System.out.println("ID Nota Fiscal: " + idNotaFiscal);
         System.out.println("ID Caixa: " + idCaixa);
-        System.out.println("Login Funcionário: "  /* + venda.getFuncionario().getLogin()*/);
+        System.out.println("Nome do Funcionário: "  + loginFuncionario);
         System.out.println("Data Emissão: " + formatarData(dataEmissao));
         System.out.println("Itens:");
         for (Item item : itens) {
