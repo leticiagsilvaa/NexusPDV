@@ -10,21 +10,21 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="supermercado.gui.controller.LoginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="supermercado.gui.telas.LoginController">
    <children>
       <ButtonBar layoutX="258.0" layoutY="270.0" prefHeight="40.0" prefWidth="56.0" />
-      <PasswordField layoutX="241.0" layoutY="211.0" prefHeight="33.0" prefWidth="284.0" promptText="Digite a senha do funcionário">
+      <PasswordField fx:id="txt3" layoutX="241.0" layoutY="211.0" prefHeight="33.0" prefWidth="284.0" promptText="Digite a senha do funcionário">
          <effect>
             <Reflection />
          </effect>
       </PasswordField>
-      <TextField layoutX="241.0" layoutY="163.0" prefHeight="33.0" prefWidth="284.0" promptText="Digite o ID do funcionário" />
+      <TextField fx:id="txt2" layoutX="241.0" layoutY="163.0" prefHeight="33.0" prefWidth="284.0" promptText="Digite o ID do funcionário" />
     <Button fx:id="btTest" alignment="CENTER" layoutX="188.0" layoutY="279.0" mnemonicParsing="false" onAction="#onBtTestAction" prefHeight="40.0" prefWidth="273.0" style="-fx-background-color: #9BB8F2;" text="Entrar" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="22.0" />
          </font>
       </Button>
-      <TextField layoutX="241.0" layoutY="118.0" prefHeight="33.0" prefWidth="284.0" promptText="Digite o ID do caixa" />
+      <TextField fx:id="txt1" layoutX="241.0" layoutY="118.0" prefHeight="33.0" prefWidth="284.0" promptText="Digite o ID do caixa" />
       <Text layoutX="147.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID do caixa:" textAlignment="RIGHT">
          <font>
             <Font size="16.0" />
