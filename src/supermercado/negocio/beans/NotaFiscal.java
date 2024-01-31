@@ -19,11 +19,10 @@ public class NotaFiscal {
     }
 
     public void gerarNota(Venda venda) {
-        this.idNotaFiscal = venda.getIdVenda();  // Usando o ID da venda como ID da nota fiscal (pode ajustar conforme necessário)
+        this.idNotaFiscal = venda.getIdVenda();
 
-        System.out.println("NexusPDV");
+        System.out.println("NexusPDV - Nota Fiscal");
         System.out.println("-----------------------------");
-        System.out.println("Nota Fiscal");
         System.out.println("ID Nota Fiscal: " + idNotaFiscal);
         System.out.println("ID Caixa: " + idCaixa);
         System.out.println("Nome do Funcionário: "  + loginFuncionario);
@@ -33,6 +32,7 @@ public class NotaFiscal {
             System.out.println(item);
         }
         System.out.println("Total: " + venda.calcularTotal());
+        System.out.println("");
     }
 
     private String formatarData(Date data) {
