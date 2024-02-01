@@ -2,9 +2,14 @@ package supermercado.gui.telas;
 
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import java.io.IOException;
 import supermercado.dados.RepositorioFuncionario;
 import supermercado.dados.RepositorioLogin;
 import supermercado.gui.util.Alerts;
@@ -12,6 +17,8 @@ import supermercado.negocio.CadastroFuncionario;
 import supermercado.negocio.CadastroLogin;
 import supermercado.negocio.beans.Funcionario;
 import supermercado.negocio.beans.Login;
+
+import java.io.IOException;
 
 
 public class CadastrarFuncionariosController {
@@ -47,11 +54,24 @@ public class CadastrarFuncionariosController {
             String texto = "Funcionário cadastrado com sucesso";
 
             Alerts.showAlert("INFORMAÇÕES", "FUNCIONÁRIO", texto, Alert.AlertType.INFORMATION);
+            abrirNovaTela();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+    private void abrirNovaTela() throws IOException {
 
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
+        Parent root = loader.load();
+
+        Scene scene = new Scene(root);
+
+        Stage stage = (Stage) bt.getScene().getWindow();
+
+        stage.setScene(scene);
+
+        stage.show();
+    }
 
 
 
