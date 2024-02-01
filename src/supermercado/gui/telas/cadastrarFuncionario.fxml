@@ -10,21 +10,21 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="supermercado.gui.telas.CadastrarFuncionariosController">
    <children>
       <ButtonBar layoutX="258.0" layoutY="270.0" prefHeight="40.0" prefWidth="56.0" />
-      <PasswordField layoutX="235.0" layoutY="246.0" prefHeight="33.0" prefWidth="284.0" promptText="Digite a senha do novo funcionário">
+      <PasswordField fx:id="txt4" layoutX="235.0" layoutY="246.0" prefHeight="33.0" prefWidth="284.0" promptText="Digite a senha do novo funcionário">
          <effect>
             <Reflection />
          </effect>
       </PasswordField>
-      <TextField layoutX="235.0" layoutY="155.0" prefHeight="33.0" prefWidth="284.0" promptText="Digite o CPF do novo funcionário" />
-      <Button alignment="CENTER" layoutX="164.0" layoutY="310.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="273.0" style="-fx-background-color: #9BB8F2;" text="Cadastrar" textAlignment="CENTER" textFill="WHITE">
+      <TextField fx:id="txt2" layoutX="235.0" layoutY="155.0" prefHeight="33.0" prefWidth="284.0" promptText="Digite o CPF do novo funcionário" />
+      <Button fx:id="bt" alignment="CENTER" layoutX="164.0" layoutY="310.0" mnemonicParsing="false" onAction="#onBtAction" prefHeight="40.0" prefWidth="273.0" style="-fx-background-color: #9BB8F2;" text="Cadastrar" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="22.0" />
          </font>
       </Button>
-      <TextField layoutX="235.0" layoutY="200.0" prefHeight="33.0" prefWidth="284.0" promptText="Digite o nome do novo funcionário" />
+      <TextField fx:id="txt3" layoutX="235.0" layoutY="200.0" prefHeight="33.0" prefWidth="284.0" promptText="Digite o nome do novo funcionário" />
       <Text layoutX="179.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login:" textAlignment="RIGHT">
          <font>
             <Font size="16.0" />
@@ -54,7 +54,7 @@
             </Text>
          </children>
       </Pane>
-      <TextField layoutX="235.0" layoutY="111.0" prefHeight="33.0" prefWidth="284.0" promptText="Digite o nome do novo funcionário" />
+      <TextField fx:id="txt1" layoutX="235.0" layoutY="111.0" prefHeight="33.0" prefWidth="284.0" promptText="Digite o nome do novo funcionário" />
       <Text layoutX="67.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome do funcionário:" textAlignment="RIGHT">
          <font>
             <Font size="16.0" />
