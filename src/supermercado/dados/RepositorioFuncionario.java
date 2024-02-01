@@ -84,7 +84,7 @@ public class RepositorioFuncionario implements IRepositorio<Funcionario>{
 
     public void updateWriter(){
         String path = "src/supermercado/arquivos/funcionarios.txt";
-        String txt[] = new String[39];
+        String txt[] = new String[50];
 
         int numeroLinha = 0;
 

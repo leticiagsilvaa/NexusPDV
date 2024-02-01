@@ -76,7 +76,7 @@ public class RepositorioProduto implements IRepositorio<Produto> {
     }
 
     public void updateWriter() {
-        String path = "src/supermercado/arquivos/produtosAtualizados.txt";
+        String path = "src/supermercado/arquivos/produtosTeste.txt";
         String txt[] = new String[150];
 
         int numeroLinha = 0;
