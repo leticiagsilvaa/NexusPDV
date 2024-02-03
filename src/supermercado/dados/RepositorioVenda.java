@@ -88,6 +88,16 @@ public class RepositorioVenda implements IRepositorio<Venda> {
 
     @Override
     public void update(int codigo) {
-        System.out.println("Venda não possui update");
+
+    }
+
+    @Override
+    public boolean exists(int codigo) {
+        for (int i = 0; i < vendas.length; i++) {
+            if (vendas[i] != null && codigo == vendas[i].getIdVenda()) {
+                return true;
+            }
+        }
+        return false;
     }
 }

@@ -123,4 +123,14 @@ public class RepositorioFuncionario implements IRepositorio<Funcionario>{
             }
         updateWriter();
     }
+
+    @Override
+    public boolean exists(int codigo) {
+        for(int i = 0; i < funcionarios.length; i++){
+            if(funcionarios[i] != null && codigo == funcionarios[i].getCodigoFuncionario()) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

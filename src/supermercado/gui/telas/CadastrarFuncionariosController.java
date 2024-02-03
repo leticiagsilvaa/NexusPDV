@@ -15,6 +15,7 @@ import supermercado.dados.RepositorioLogin;
 import supermercado.dados.load.LoadFuncionario;
 import supermercado.dados.load.LoadLogin;
 import supermercado.gui.util.Alerts;
+import supermercado.negocio.Fachada;
 import supermercado.negocio.beans.Funcionario;
 import supermercado.negocio.beans.Login;
 

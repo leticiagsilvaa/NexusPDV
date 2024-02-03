@@ -14,4 +14,6 @@ public interface IRepositorio<N> {
 
     void delete(int codigo);
 
+    boolean exists(int codigo);
+
 }

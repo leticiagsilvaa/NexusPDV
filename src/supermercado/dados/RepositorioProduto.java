@@ -118,4 +118,14 @@ public class RepositorioProduto implements IRepositorio<Produto> {
         updateWriter();
     }
 
+    @Override
+    public boolean exists(int codigo) {
+        for (int i = 0; i < produtos.length; i++) {
+            if (produtos[i] != null && codigo == produtos[i].getCodigoProd()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

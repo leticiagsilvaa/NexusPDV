@@ -1,28 +1,19 @@
 Carlos Oliveira
 234.567.890-12
 carlos.oliveira
-23456789012
+12345
 Amanda Costa
 890.123.456-23
 amanda.costa
-89012345623
+12345
 Gabriel Martins
 012.345.678-90
 gabriel.martins
-01234567890
-Leticia Gomes
-71492549428
-lelets
-gomes1505
+12345
 
 
 
 
-Malu Vasconcelos
-12345678900
-maluvasc
-malu123
-Gerluce Gomes
-12345678900
-gerluce
-minhavo
+
+
+

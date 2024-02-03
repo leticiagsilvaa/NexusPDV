@@ -2,30 +2,51 @@ package supermercado.negocio;
 
 import supermercado.dados.RepositorioLogin;
 import supermercado.negocio.beans.Login;
-
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import supermercado.negocio.exceptions.DuplicadoException;
+import supermercado.negocio.exceptions.NaoExisteException;
 
 public class CadastroLogin {
-//    public static RepositorioLogin cadastrarLogins(){
-//        supermercado.dados.RepositorioLogin repositorio = new RepositorioLogin(10);
-//
-//        String path = "src/supermercado/arquivos/login.txt";
-//
-//        try (BufferedReader br = new BufferedReader(new FileReader(path))) {
-//            String line = br.readLine();
-//
-//            while (line != null) {
-//                String login = line;
-//                line = br.readLine();
-//                String pass = line;
-//                repositorio.add(new Login(login, pass));
-//                line = br.readLine();
-//            }
-//        } catch (IOException e) {
-//            System.out.println(e.getMessage());
-//        }
-//        return repositorio;
-//    };
+
+    private static RepositorioLogin repositorio;
+
+    public CadastroLogin(RepositorioLogin repositorio){
+        this.repositorio = repositorio;
+    }
+
+    public static void register(Login login) throws DuplicadoException {
+            if (login == null) {
+                throw new IllegalArgumentException("Campos precisam ser preenchidos integralmente");
+            } else {
+                if (repositorio.exists(login.getCodigo())) {
+                    repositorio.add(login);
+                } else {
+                    throw new DuplicadoException("Login já cadastrado");
+                }
+            }
+    }
+
+    public void unregister(int codigo) throws NaoExisteException {
+        Login login = this.repositorio.getOne(codigo);
+        if (login != null) {
+            this.repositorio.delete(codigo);
+        } else {
+            throw new NaoExisteException("Código do login não existe!");
+        }
+    }
+
+    public Login search(int codigo) throws NaoExisteException {
+        return this.repositorio.getOne(codigo);
+    }
+
+    public boolean exists(int codigo) {
+        return this.repositorio.exists(codigo);
+    }
+
+    public void delete(int num) throws NaoExisteException {
+        this.repositorio.delete(num);
+    }
+
+    public void update(int codigo) throws NaoExisteException {
+        this.repositorio.update(codigo);
+    }
 }

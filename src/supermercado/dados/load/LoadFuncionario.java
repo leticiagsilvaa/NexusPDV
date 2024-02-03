@@ -34,5 +34,4 @@ public class LoadFuncionario {
         }
         return repositorio;
     }
-
 }
