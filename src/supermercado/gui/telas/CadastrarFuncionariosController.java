@@ -12,9 +12,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import supermercado.dados.RepositorioFuncionario;
 import supermercado.dados.RepositorioLogin;
+import supermercado.dados.load.LoadFuncionario;
+import supermercado.dados.load.LoadLogin;
 import supermercado.gui.util.Alerts;
-import supermercado.negocio.CadastroFuncionario;
-import supermercado.negocio.CadastroLogin;
 import supermercado.negocio.beans.Funcionario;
 import supermercado.negocio.beans.Login;
 
@@ -40,8 +40,8 @@ public class CadastrarFuncionariosController {
 
     public void onBtAction() {
         try {
-            RepositorioFuncionario repositorioFuncionario = CadastroFuncionario.cadastrarFuncionarios();
-            RepositorioLogin repositorioLogin = CadastroLogin.cadastrarLogins();
+            RepositorioFuncionario repositorioFuncionario = LoadFuncionario.cadastrarFuncionarios();
+            RepositorioLogin repositorioLogin = LoadLogin.cadastrarLogins();
 
             String nome = txt1.getText();
             String cpf = txt2.getText();

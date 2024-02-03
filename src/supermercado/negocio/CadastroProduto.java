@@ -9,27 +9,27 @@ import java.io.IOException;
 
 public class CadastroProduto {
 
-    public static RepositorioProduto cadastrarProdutos(){
-
-        RepositorioProduto repositorio = new RepositorioProduto(50);
-
-        String path_produtos = "src/supermercado/arquivos/produtos.txt";
-
-        try (BufferedReader br = new BufferedReader(new FileReader(path_produtos))) {
-            String line = br.readLine();
-
-            while (line != null) {
-                String first_parameter = line;
-                line = br.readLine();
-                String second_parameter = line;
-                line = br.readLine();
-                String third_parameter = line;
-                repositorio.add(new Produto(first_parameter, second_parameter, Double.parseDouble(third_parameter)));
-                line = br.readLine();
-            }
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
-        return repositorio;
-    }
+//    public static RepositorioProduto cadastrarProdutos(){
+//
+//        RepositorioProduto repositorio = new RepositorioProduto(50);
+//
+//        String path_produtos = "src/supermercado/arquivos/produtos.txt";
+//
+//        try (BufferedReader br = new BufferedReader(new FileReader(path_produtos))) {
+//            String line = br.readLine();
+//
+//            while (line != null) {
+//                String first_parameter = line;
+//                line = br.readLine();
+//                String second_parameter = line;
+//                line = br.readLine();
+//                String third_parameter = line;
+//                repositorio.add(new Produto(first_parameter, second_parameter, Double.parseDouble(third_parameter)));
+//                line = br.readLine();
+//            }
+//        } catch (IOException e) {
+//            System.out.println(e.getMessage());
+//        }
+//        return repositorio;
+//    }
 }

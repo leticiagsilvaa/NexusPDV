@@ -1,10 +1,7 @@
 package supermercado.dados;
 
-import supermercado.UI;
 import supermercado.negocio.beans.Login;
 import java.util.Arrays;
-import java.util.Scanner;
-import supermercado.UI.*;
 
 public class RepositorioLogin implements IRepositorio<Login>{
     private int quantidadeLogins;

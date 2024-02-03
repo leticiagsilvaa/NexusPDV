@@ -12,6 +12,8 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import supermercado.dados.RepositorioFuncionario;
 import supermercado.dados.RepositorioLogin;
+import supermercado.dados.load.LoadFuncionario;
+import supermercado.dados.load.LoadLogin;
 import supermercado.gui.util.Alerts;
 import supermercado.negocio.CadastroFuncionario;
 import supermercado.negocio.CadastroLogin;
@@ -40,8 +42,8 @@ public class LoginController {
             String login = txt2.getText();
             String senha = txt3.getText();
 
-            RepositorioFuncionario repositorioFuncionario = CadastroFuncionario.cadastrarFuncionarios();
-            RepositorioLogin repositorioLogin = CadastroLogin.cadastrarLogins();
+            RepositorioFuncionario repositorioFuncionario = LoadFuncionario.cadastrarFuncionarios();
+            RepositorioLogin repositorioLogin = LoadLogin.cadastrarLogins();
 
             String user_funcionario = repositorioLogin.loginMatch(new Login(login, senha));
 
