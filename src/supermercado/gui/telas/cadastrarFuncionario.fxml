@@ -19,7 +19,7 @@
          </effect>
       </PasswordField>
       <TextField fx:id="txt2" layoutX="235.0" layoutY="155.0" prefHeight="33.0" prefWidth="284.0" promptText="Digite o CPF do novo funcionário" />
-      <Button fx:id="bt" alignment="CENTER" layoutX="164.0" layoutY="310.0" mnemonicParsing="false" onAction="#onBtAction" prefHeight="40.0" prefWidth="273.0" style="-fx-background-color: #9BB8F2;" text="Cadastrar" textAlignment="CENTER" textFill="WHITE">
+      <Button fx:id="bt" alignment="CENTER" layoutX="298.0" layoutY="310.0" mnemonicParsing="false" onAction="#onBtAction" prefHeight="40.0" prefWidth="216.0" style="-fx-background-color: #9BB8F2;" text="Cadastrar" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="22.0" />
          </font>
@@ -60,5 +60,10 @@
             <Font size="16.0" />
          </font>
       </Text>
+      <Button fx:id="btCancel" alignment="CENTER" layoutX="67.0" layoutY="310.0" mnemonicParsing="false" onAction="#onBtAction" prefHeight="40.0" prefWidth="216.0" style="-fx-background-color: 111111; -fx-border-color: #9BB8F2; -fx-border-width: 2; -fx-border-radius: 5;" text="Cancelar" textAlignment="CENTER" textFill="#9bb8f2">
+         <font>
+            <Font name="Calibri Bold" size="22.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
