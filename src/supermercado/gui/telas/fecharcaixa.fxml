@@ -12,17 +12,17 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="supermercado.gui.telas.CadastrarFuncionariosController">
    <children>
       <ButtonBar layoutX="258.0" layoutY="270.0" prefHeight="40.0" prefWidth="56.0" />
-      <PasswordField fx:id="txt" layoutX="205.0" layoutY="239.0" prefHeight="33.0" prefWidth="356.0" promptText="Digite a senha do funcionário ativo">
+      <PasswordField fx:id="txt" layoutX="205.0" layoutY="281.0" prefHeight="33.0" prefWidth="356.0" promptText="Digite a senha do funcionário ativo">
          <effect>
             <Reflection />
          </effect>
       </PasswordField>
-      <Button fx:id="bt" alignment="CENTER" layoutX="298.0" layoutY="310.0" mnemonicParsing="false" onAction="#onBtAction" prefHeight="40.0" prefWidth="261.0" style="-fx-background-color: #9BB8F2;" text="Finalizar " textAlignment="CENTER" textFill="WHITE">
+      <Button fx:id="bt" alignment="CENTER" layoutX="298.0" layoutY="332.0" mnemonicParsing="false" onAction="#onBtAction" prefHeight="40.0" prefWidth="261.0" style="-fx-background-color: #9BB8F2;" text="Finalizar " textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="22.0" />
          </font>
       </Button>
-      <Text layoutX="38.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Valor total das vendas:" textAlignment="RIGHT">
+      <Text layoutX="38.0" layoutY="262.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Valor total das vendas:" textAlignment="RIGHT">
          <font>
             <Font size="16.0" />
          </font>
@@ -32,7 +32,7 @@
             <Font size="16.0" />
          </font>
       </Text>
-      <Text layoutX="37.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Senha do funcionario:" textAlignment="RIGHT">
+      <Text layoutX="37.0" layoutY="303.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Senha do funcionario:" textAlignment="RIGHT">
          <font>
             <Font size="16.0" />
          </font>
@@ -51,30 +51,42 @@
             </Text>
          </children>
       </Pane>
-      <Text layoutX="41.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome do funcionário:" textAlignment="RIGHT">
+      <Text layoutX="39.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome do funcionário:" textAlignment="RIGHT">
          <font>
             <Font size="16.0" />
          </font>
       </Text>
-      <Button fx:id="btCancel" alignment="CENTER" layoutX="31.0" layoutY="310.0" mnemonicParsing="false" onAction="#onBtAction" prefHeight="44.0" prefWidth="252.0" style="-fx-background-color: 111111; -fx-border-color: #9BB8F2; -fx-border-width: 2; -fx-border-radius: 5;" text="Cancelar" textAlignment="CENTER" textFill="#9bb8f2">
+      <Button fx:id="btCancel" alignment="CENTER" layoutX="31.0" layoutY="332.0" mnemonicParsing="false" onAction="#onBtAction" prefHeight="44.0" prefWidth="252.0" style="-fx-background-color: 111111; -fx-border-color: #9BB8F2; -fx-border-width: 2; -fx-border-radius: 5;" text="Cancelar" textAlignment="CENTER" textFill="#9bb8f2">
          <font>
             <Font name="Calibri Bold" size="22.0" />
          </font>
       </Button>
       <AnchorPane layoutX="209.0" layoutY="80.0" prefHeight="25.0" prefWidth="328.0" style="-fx-background-color: #F2F2F2; -fx-background-radius: 5px;" />
       <AnchorPane layoutX="184.0" layoutY="123.0" prefHeight="25.0" prefWidth="170.0" style="-fx-background-color: #F2F2F2; -fx-background-radius: 5px;" />
-      <AnchorPane layoutX="213.0" layoutY="203.0" prefHeight="25.0" prefWidth="170.0" style="-fx-background-color: #F2F2F2; -fx-background-radius: 5px;" />
+      <AnchorPane layoutX="213.0" layoutY="245.0" prefHeight="25.0" prefWidth="170.0" style="-fx-background-color: #F2F2F2; -fx-background-radius: 5px;" />
       <Text layoutX="37.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Valor a dinheiro:" textAlignment="RIGHT">
          <font>
             <Font size="16.0" />
          </font>
       </Text>
-      <AnchorPane layoutX="157.0" layoutY="163.0" prefHeight="25.0" prefWidth="116.0" style="-fx-background-color: #F2F2F2; -fx-background-radius: 5px;" />
-      <Text layoutX="317.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Valor no cartão:" textAlignment="RIGHT">
+      <AnchorPane layoutX="163.0" layoutY="163.0" prefHeight="25.0" prefWidth="116.0" style="-fx-background-color: #F2F2F2; -fx-background-radius: 5px;" />
+      <Text layoutX="329.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Valor no pix:" textAlignment="RIGHT">
          <font>
             <Font size="16.0" />
          </font>
       </Text>
       <AnchorPane layoutX="441.0" layoutY="163.0" prefHeight="25.0" prefWidth="116.0" style="-fx-background-color: #F2F2F2; -fx-background-radius: 5px;" />
+      <Text layoutX="38.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Valor no crédito:" textAlignment="RIGHT">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <AnchorPane layoutX="167.0" layoutY="203.0" prefHeight="25.0" prefWidth="116.0" style="-fx-background-color: #F2F2F2; -fx-background-radius: 5px;" />
+      <Text layoutX="310.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Valor no débito:" textAlignment="RIGHT">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <AnchorPane layoutX="439.0" layoutY="202.0" prefHeight="25.0" prefWidth="116.0" style="-fx-background-color: #F2F2F2; -fx-background-radius: 5px;" />
    </children>
 </AnchorPane>
