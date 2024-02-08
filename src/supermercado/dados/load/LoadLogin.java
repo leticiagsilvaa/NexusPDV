@@ -11,7 +11,7 @@ public class LoadLogin {
     public static RepositorioLogin cadastrarLogins(){
         supermercado.dados.RepositorioLogin repositorio = new RepositorioLogin(10);
 
-        String path = "src/supermercado/arquivos/login.txt";
+        String path = "src/supermercado/arquivos/login.dat";
 
         try (BufferedReader br = new BufferedReader(new FileReader(path))) {
             String line = br.readLine();

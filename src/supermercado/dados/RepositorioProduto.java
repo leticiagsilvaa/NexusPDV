@@ -3,19 +3,75 @@ package supermercado.dados;
 import supermercado.negocio.beans.Funcionario;
 import supermercado.negocio.beans.Produto;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class RepositorioProduto implements IRepositorio<Produto> {
+public class RepositorioProduto {
     private Produto produtos[];
     private int quantidadeProdutos;
+    private static RepositorioProduto instance;
 
     public RepositorioProduto(int numeroMaximo) {
         produtos = new Produto[numeroMaximo];
         quantidadeProdutos = 0;
+    }
+
+    public static RepositorioProduto getInstance() {
+        if (instance == null) {
+            instance = lerDoArquivo();
+        }
+        return instance;
+    }
+
+    private static RepositorioProduto lerDoArquivo() {
+        RepositorioProduto instanciaLocal = null;
+
+        File in = new File("produtos.txt");
+        FileInputStream fis = null;
+        ObjectInputStream ois = null;
+        try {
+            fis = new FileInputStream(in);
+            ois = new ObjectInputStream(fis);
+            Object o = ois.readObject();
+            instanciaLocal = (RepositorioProduto) o;
+        } catch (Exception e) {
+            instanciaLocal = new RepositorioProduto(100);
+        } finally {
+            if (ois != null) {
+                try {
+                    ois.close();
+                } catch (IOException e) {/* Silent exception */
+                }
+            }
+        }
+
+        return instanciaLocal;
+    }
+
+    public void salvarArquivo() {
+        if (instance == null) {
+            return;
+        }
+        File out = new File("produtos.txt");
+        FileOutputStream fos = null;
+        ObjectOutputStream oos = null;
+
+        try {
+            fos = new FileOutputStream(out);
+            oos = new ObjectOutputStream(fos);
+            oos.writeObject(instance);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (oos != null) {
+                try {
+                    oos.close();
+                } catch (IOException e) {
+                    /* Silent */
+                }
+            }
+        }
     }
 
     public Produto[] findByName(String nomeProd) {
@@ -36,7 +92,6 @@ public class RepositorioProduto implements IRepositorio<Produto> {
 
     ;
 
-    @Override
     public Produto[] getAll() {
         for (Produto produto : produtos) {
             if (produto != null) {
@@ -46,7 +101,6 @@ public class RepositorioProduto implements IRepositorio<Produto> {
         return null;
     }
 
-    @Override
     public Produto getOne(int codigo) {
         for (int i = 0; i < produtos.length; i++) {
             if (produtos[i] != null && codigo == produtos[i].getCodigoProd()) {
@@ -56,7 +110,6 @@ public class RepositorioProduto implements IRepositorio<Produto> {
         return null;
     }
 
-    @Override
     public void add(Produto produto) {
         if (quantidadeProdutos < produtos.length) {
             produtos[quantidadeProdutos] = produto;
@@ -65,7 +118,6 @@ public class RepositorioProduto implements IRepositorio<Produto> {
         updateWriter();
     }
 
-    @Override
     public void delete(int codigo) {
         for (int i = 0; i < produtos.length; i++) {
             if (produtos[i] != null && codigo == produtos[i].getCodigoProd()) {
@@ -102,7 +154,6 @@ public class RepositorioProduto implements IRepositorio<Produto> {
         }
     }
 
-    @Override
     public void update(int codigo) {
         Scanner scanner = new Scanner(System.in);
         for (int i = 0; i < produtos.length; i++) {
@@ -118,7 +169,6 @@ public class RepositorioProduto implements IRepositorio<Produto> {
         updateWriter();
     }
 
-    @Override
     public boolean exists(int codigo) {
         for (int i = 0; i < produtos.length; i++) {
             if (produtos[i] != null && codigo == produtos[i].getCodigoProd()) {

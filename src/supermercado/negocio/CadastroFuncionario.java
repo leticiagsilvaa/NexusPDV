@@ -55,4 +55,10 @@ public class CadastroFuncionario {
         this.repositorio.update(codigo);
     }
 
+    public Funcionario findByUser(String userFuncionario) throws NaoExisteException{
+        if( userFuncionario != null){
+            this.repositorio.findByUser(userFuncionario);
+        }
+        throw new NaoExisteException("User não existe!");
+    }
 }

@@ -6,6 +6,7 @@ import supermercado.dados.RepositorioProduto;
 import supermercado.negocio.CadastroFuncionario;
 import supermercado.negocio.CadastroLogin;
 import supermercado.negocio.CadastroProduto;
+import supermercado.negocio.Fachada;
 import supermercado.negocio.beans.*;
 import supermercado.negocio.exceptions.PagamentoException;
 
@@ -18,7 +19,9 @@ public class Main {
 
         //RepositorioFuncionario repositorioFuncionario = CadastroFuncionario.cadastrarFuncionarios();
         //RepositorioProduto repositorioProduto = CadastroProduto.cadastrarProdutos();
-       // RepositorioLogin repositorioLogin = CadastroLogin.cadastrarLogins();
+
+        System.out.println(Arrays.toString(Fachada.getInstance().getAll()));
+
 
         //Login input_login = UI.systemLogin();
         //String user_funcionario = repositorioLogin.loginMatch(input_login);
@@ -55,12 +58,7 @@ public class Main {
         System.out.println("FUNCIONARIO COD 2: ");
         System.out.println(repositorioFuncionario.getOne(2));
 
-        //REPOSITORIO DE LOGIN
-        System.out.println("TESTE DE REPOSITORIO");
-        System.out.println("TODOS: ");
-        System.out.println(Arrays.toString(repositorioLogin.getAll()));
-        System.out.println("LOGIN COD 2: ");
-        System.out.println(repositorioLogin.findByUser("lucas.souza"));
+
 
         //REPOSITORIO PRODUTOS
         System.out.println("TESTE DE REPOSITORIO PRODUTO");
@@ -79,7 +77,7 @@ public class Main {
         //Estoque estoque = new Estoque(repositorioProduto);
         //System.out.println("Produtos no estoque após adição:");
         //estoque.listarProdutosNoEstoque();
-        */
+
         try {
             // Instanciando PagamentoCartao
             PagamentoCartao pagamentoCartao = new PagamentoCartao(
@@ -113,5 +111,6 @@ public class Main {
         } catch (PagamentoException e) {
             System.out.println(" O codigo Pix não pode ser nulo" );
         }
+         */
     }
 }

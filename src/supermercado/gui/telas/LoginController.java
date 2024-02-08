@@ -10,16 +10,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.IOException;
-import supermercado.dados.RepositorioFuncionario;
-import supermercado.dados.RepositorioLogin;
-import supermercado.dados.load.LoadFuncionario;
-import supermercado.dados.load.LoadLogin;
 import supermercado.gui.util.Alerts;
-import supermercado.negocio.CadastroFuncionario;
-import supermercado.negocio.CadastroLogin;
+import supermercado.negocio.Fachada;
 import supermercado.negocio.beans.Funcionario;
 import supermercado.negocio.beans.Login;
-
 
 public class LoginController {
 
@@ -42,12 +36,10 @@ public class LoginController {
             String login = txt2.getText();
             String senha = txt3.getText();
 
-            RepositorioFuncionario repositorioFuncionario = LoadFuncionario.cadastrarFuncionarios();
-            RepositorioLogin repositorioLogin = LoadLogin.cadastrarLogins();
 
-            String user_funcionario = repositorioLogin.loginMatch(new Login(login, senha));
+            String user_funcionario = Fachada.getInstance().loginMatch(new Login(login, senha));
 
-            Funcionario funcionario = repositorioFuncionario.findByUser(user_funcionario);
+            Funcionario funcionario = Fachada.getInstance().procurarLoginFuncionario(user_funcionario);
 
             String texto = "Caixa " + caixa + " aberto " + "\nAtendido pelo funcionário " + funcionario.getNomeFuncionario() + "\nCódigo: " + funcionario.getCodigoFuncionario();
 

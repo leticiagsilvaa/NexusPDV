@@ -2,8 +2,6 @@ package supermercado.negocio;
 
 import supermercado.dados.RepositorioLogin;
 import supermercado.dados.RepositorioFuncionario;
-import supermercado.dados.RepositorioProduto;
-import supermercado.dados.RepositorioVenda;
 import supermercado.negocio.beans.Funcionario;
 import supermercado.negocio.beans.Login;
 import supermercado.negocio.beans.Produto;
@@ -17,12 +15,20 @@ public class Fachada {
     private CadastroProduto produtos;
     private CadastroVenda vendas;
     private CadastroLogin logins;
+    private static Fachada instance;
+
+    public static Fachada getInstance() {
+        if (instance == null) {
+            instance = new Fachada();
+        }
+        return instance;
+    }
 
     private Fachada() {
-        //this.funcionarios = new CadastroFuncionario(new RepositorioFuncionario(10));
+        this.funcionarios = new CadastroFuncionario(RepositorioFuncionario.getInstance());
         //this.produtos = new CadastroProduto(new RepositorioProduto(100));
         //this.vendas = new CadastroVenda(RepositorioVenda(1000));
-        //this.logins = new CadastroLogin(new RepositorioLogin(10));
+        this.logins = new CadastroLogin(new RepositorioLogin(10));
     }
 
     public void cadastrarFuncionario(Funcionario funcionario) throws DuplicadoException {
@@ -45,8 +51,15 @@ public class Fachada {
         return this.funcionarios.search(codigo);
     }
 
+    public Funcionario procurarLoginFuncionario(String login) throws NaoExisteException {
+        return this.funcionarios.findByUser(login);
+
     public Login procurarLogin(int codigo) throws NaoExisteException {
         return this.logins.search(codigo);
+    }
+
+    public Login[] getAll() throws NaoExisteException {
+        return this.logins.getAll();
     }
 
     public Venda procurarVenda(int codigo) throws NaoExisteException {
@@ -73,5 +86,7 @@ public class Fachada {
         this.vendas.delete(codigo);
     }
 
+    public String loginMatch(Login login) throws NaoExisteException {
+        return this.logins.loginMatch(login);
+    }
 }
-
