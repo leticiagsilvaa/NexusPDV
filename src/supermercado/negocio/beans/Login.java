@@ -2,9 +2,10 @@ package supermercado.negocio.beans;
 
 import supermercado.negocio.exceptions.SenhaInvalidaException;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Login{
+public class Login implements Serializable {
     private int codigo;
     private String login;
     private String senha;

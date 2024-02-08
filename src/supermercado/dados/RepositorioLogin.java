@@ -20,6 +20,7 @@ public class RepositorioLogin {
         if (instance == null) {
             instance = lerDoArquivo();
         }
+        salvarArquivo();
         return instance;
     }
 
@@ -48,7 +49,7 @@ public class RepositorioLogin {
         return instanciaLocal;
     }
 
-    public void salvarArquivo() {
+    public static void salvarArquivo() {
         if (instance == null) {
             return;
         }

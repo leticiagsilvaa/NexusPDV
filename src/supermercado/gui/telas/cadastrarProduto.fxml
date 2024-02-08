@@ -7,15 +7,15 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="supermercado.gui.telas.cadastrarProdutoController">
    <children>
-      <TextField layoutX="225.0" layoutY="132.0" prefHeight="33.0" prefWidth="301.0" promptText="Digite o nome do produto" />
-      <Button alignment="CENTER" layoutX="320.0" layoutY="311.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="206.0" style="-fx-background-color: #9BB8F2;" text="Cadastrar" textAlignment="CENTER" textFill="WHITE">
+      <TextField fx:id="txt2" layoutX="225.0" layoutY="132.0" prefHeight="33.0" prefWidth="301.0" promptText="Digite o nome do produto" />
+      <Button fx:id="btCadastrar" alignment="CENTER" layoutX="320.0" layoutY="311.0" mnemonicParsing="false" onAction="#onBtCadastrarAction" prefHeight="40.0" prefWidth="206.0" style="-fx-background-color: #9BB8F2;" text="Cadastrar" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="22.0" />
          </font>
       </Button>
-      <TextField layoutX="161.0" layoutY="183.0" prefHeight="33.0" prefWidth="365.0" promptText="Digite a categoria do produto" />
+      <TextField fx:id="txt3" layoutX="161.0" layoutY="183.0" prefHeight="33.0" prefWidth="365.0" promptText="Digite a categoria do produto" />
       <Text layoutX="74.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Categoria:" textAlignment="RIGHT">
          <font>
             <Font size="16.0" />
@@ -45,20 +45,20 @@
             </Text>
          </children>
       </Pane>
-      <TextField layoutX="225.0" layoutY="84.0" prefHeight="33.0" prefWidth="301.0" promptText="Digite o código do produto" />
+      <TextField fx:id="txt1" layoutX="225.0" layoutY="84.0" prefHeight="33.0" prefWidth="301.0" promptText="Digite o código do produto" />
       <Text layoutX="74.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Código do produto:" textAlignment="RIGHT">
          <font>
             <Font size="16.0" />
          </font>
       </Text>
-      <TextField layoutX="130.0" layoutY="236.0" prefHeight="33.0" prefWidth="108.0" promptText="Digite o valor" />
+      <TextField fx:id="txt4" layoutX="130.0" layoutY="236.0" prefHeight="33.0" prefWidth="108.0" promptText="Digite o valor" />
       <Text layoutX="252.0" layoutY="258.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quant Estoque:" textAlignment="RIGHT">
          <font>
             <Font size="16.0" />
          </font>
       </Text>
-      <TextField layoutX="367.0" layoutY="236.0" prefHeight="33.0" prefWidth="159.0" promptText="Digite a quant em estoque" />
-      <Button fx:id="btCancel" alignment="CENTER" layoutX="74.0" layoutY="309.0" mnemonicParsing="false" onAction="#onBtAction" prefHeight="40.0" prefWidth="206.0" style="-fx-background-color: 111111; -fx-border-color: #9BB8F2; -fx-border-width: 2; -fx-border-radius: 5;" text="Cancelar" textAlignment="CENTER" textFill="#9bb8f2">
+      <TextField fx:id="txt5" layoutX="367.0" layoutY="236.0" prefHeight="33.0" prefWidth="159.0" promptText="Digite a quant em estoque" />
+      <Button fx:id="btCancelar" alignment="CENTER" layoutX="74.0" layoutY="309.0" mnemonicParsing="false" onAction="#onBtCancelarAction" prefHeight="40.0" prefWidth="206.0" style="-fx-background-color: 111111; -fx-border-color: #9BB8F2; -fx-border-width: 2; -fx-border-radius: 5;" text="Cancelar" textAlignment="CENTER" textFill="#9bb8f2">
          <font>
             <Font name="Calibri Bold" size="22.0" />
          </font>
