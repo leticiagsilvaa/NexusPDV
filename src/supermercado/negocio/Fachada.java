@@ -53,6 +53,7 @@ public class Fachada {
 
     public Funcionario procurarLoginFuncionario(String login) throws NaoExisteException {
         return this.funcionarios.findByUser(login);
+    }
 
     public Login procurarLogin(int codigo) throws NaoExisteException {
         return this.logins.search(codigo);
