@@ -1,9 +1,8 @@
 package supermercado.negocio.beans;
 
 public enum StatusPedido {
+    PROCESSANDO,
     PENDENTE,
-    AGUARDANDO_PAGAMENTO,
-    PAGAMENTO_AUTORIZADO,
-    COMPRA_CONCLUIDA,
-    COMPRA_CANCELADA,
+    CANCELADO,
+    EFETUADO,
 }
