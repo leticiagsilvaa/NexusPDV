@@ -22,8 +22,18 @@ public class PagamentoPix extends Pagamento {
         }
         this.codigoPix = codigoPix;
     }
+
     @Override
-    public void pagar() {
-        setStatus(StatusPedido.COMPRA_CONCLUIDA);
+    public void pagar() throws PagamentoException {
+        if (getValor() <= 0) {
+            throw new PagamentoException("O valor da venda deve ser maior que zero.");
+        }
+
+        if (getValor() <= getVenda().calcularTotal()) {
+            System.out.println("Pagamento via Pix realizado. Código Pix: " + codigoPix);
+            setStatus(StatusPedido.EFETUADO);
+        } else {
+            throw new PagamentoException("Valor recebido insuficiente para realizar a compra.");
+        }
     }
 }
