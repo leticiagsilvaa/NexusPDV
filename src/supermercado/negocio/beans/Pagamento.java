@@ -1,8 +1,10 @@
 package supermercado.negocio.beans;
 
+import supermercado.negocio.exceptions.PagamentoException;
+
 import java.time.LocalDateTime;
 
-abstract class Pagamento {
+public abstract class Pagamento {
 
     private StatusPedido status;
     private int id;
@@ -17,6 +19,7 @@ abstract class Pagamento {
         this.venda = venda;
         this.valor = valor;
     }
+
     public StatusPedido getStatus() {
         return status;
     }
@@ -56,6 +59,6 @@ abstract class Pagamento {
     public void setValor(Double valor) {
         this.valor = valor;
     }
-    public abstract void pagar();
-}
 
+    public abstract void pagar() throws PagamentoException;
+}
