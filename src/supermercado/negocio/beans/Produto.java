@@ -7,16 +7,13 @@ public class Produto {
     private Double valorProd;
     private static int totalProdutos = 0;
 
-    public Produto(String nomeProd, String categoriaProd, Double valorProd){
-        this.codigoProd = gerarNovoCodigo();
+    public Produto(int codigo, String nomeProd, String categoriaProd, Double valorProd){
         this.nomeProd = nomeProd;
         this.categoriaProd = categoriaProd;
         this.valorProd = valorProd;
+        this.codigoProd = codigo;
     }
 
-    private int gerarNovoCodigo(){
-        return ++totalProdutos;
-    }
     public Double getValorProd() {
         return valorProd;
     }

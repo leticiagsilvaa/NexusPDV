@@ -20,9 +20,6 @@ public class Main {
         //RepositorioFuncionario repositorioFuncionario = CadastroFuncionario.cadastrarFuncionarios();
         //RepositorioProduto repositorioProduto = CadastroProduto.cadastrarProdutos();
 
-        System.out.println(Arrays.toString(Fachada.getInstance().getAll()));
-
-
         //Login input_login = UI.systemLogin();
         //String user_funcionario = repositorioLogin.loginMatch(input_login);
 

@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class RepositorioFuncionario {
-    private static RepositorioFuncionario instance;
+    //private static RepositorioFuncionario instance;
     private int quantidadeFuncionarios;
     private Funcionario funcionarios[];
 
@@ -17,6 +17,7 @@ public class RepositorioFuncionario {
         quantidadeFuncionarios = 0;
     }
 
+    /*
     public static RepositorioFuncionario getInstance() {
         if (instance == null) {
             instance = lerDoArquivo();
@@ -41,7 +42,7 @@ public class RepositorioFuncionario {
             if (ois != null) {
                 try {
                     ois.close();
-                } catch (IOException e) {/* Silent exception */
+                } catch (IOException e) { Silent exception
                 }
             }
         }
@@ -68,12 +69,12 @@ public class RepositorioFuncionario {
                 try {
                     oos.close();
                 } catch (IOException e) {
-                    /* Silent */
+                    /* Silent
                 }
             }
         }
     }
-
+*/
 
     public Funcionario[] getAll() {
         for (Funcionario funcionario : funcionarios) {

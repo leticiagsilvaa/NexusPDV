@@ -44,7 +44,7 @@ public class cadastrarProdutoController {
             String valor = txt4.getText();
             String quantidade = txt5.getText();
 
-            Fachada.getInstance().cadastrarProdutos(new Produto(nome,categoria, Double.parseDouble(valor)));
+            //Fachada.getInstance().cadastrarProdutos(new Produto(nome,categoria, Double.parseDouble(valor)));
 
             String texto = "Produto cadastrado com sucesso";
 

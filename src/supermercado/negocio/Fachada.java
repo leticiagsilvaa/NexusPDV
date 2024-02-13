@@ -10,6 +10,7 @@ import supermercado.negocio.exceptions.DuplicadoException;
 import supermercado.negocio.exceptions.NaoExisteException;
 
 public class Fachada {
+    /*
 
     private CadastroFuncionario funcionarios;
     private CadastroProduto produtos;
@@ -90,4 +91,5 @@ public class Fachada {
     public String loginMatch(Login login) throws NaoExisteException {
         return this.logins.loginMatch(login);
     }
+    */
 }

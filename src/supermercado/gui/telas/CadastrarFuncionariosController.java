@@ -42,8 +42,8 @@ public class CadastrarFuncionariosController {
             String login = txt3.getText();
             String senha = txt4.getText();
 
-            Fachada.getInstance().cadastrarFuncionario(new Funcionario(nome, cpf, new Login(login, senha)));
-            Fachada.getInstance().cadastrarLogin(new Login(login, senha));
+            //Fachada.getInstance().cadastrarFuncionario(new Funcionario(nome, cpf, new Login(login, senha)));
+            //Fachada.getInstance().cadastrarLogin(new Login(login, senha));
 
             String texto = "Funcionário cadastrado com sucesso";
 

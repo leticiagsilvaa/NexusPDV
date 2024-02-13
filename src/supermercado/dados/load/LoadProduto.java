@@ -23,7 +23,9 @@ public class LoadProduto {
                 String second_parameter = line;
                 line = br.readLine();
                 String third_parameter = line;
-                repositorio.add(new Produto(first_parameter, second_parameter, Double.parseDouble(third_parameter)));
+                line = br.readLine();
+                String fourth_parameter = line;
+                repositorio.add(new Produto(Integer.parseInt(first_parameter), second_parameter, third_parameter, Double.parseDouble(fourth_parameter)));
                 line = br.readLine();
             }
         } catch (IOException e) {

@@ -2,25 +2,19 @@
 
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #EAE8E8;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #EAE8E8;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="supermercado.gui.telas.PagamentoController">
    <children>
       <Text fill="#9bb8f2" layoutX="81.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SELECIONE A FORMA DE PAGAMENTO" wrappingWidth="454.62109375">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Text>
-      <TextField layoutX="360.0" layoutY="304.0" prefHeight="42.0" prefWidth="176.0" promptText="Digite a opção escolhida" style="-fx-background-color: #F2F2F2; -fx-border-radius: 10px;">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </TextField>
-      <Button layoutX="74.0" layoutY="137.0" mnemonicParsing="false" style="-fx-background-color: #F2F2F2; -fx-background-radius: 10px;" text="1 - Dinheiro">
+      <Button fx:id="dinheiro" layoutX="74.0" layoutY="137.0" mnemonicParsing="false" onAction="#onBtAction" style="-fx-background-color: #F2F2F2; -fx-background-radius: 10px;" text="1 - Dinheiro">
          <font>
             <Font size="16.0" />
          </font>
@@ -28,7 +22,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button layoutX="74.0" layoutY="193.0" mnemonicParsing="false" style="-fx-background-color: #F2F2F2; -fx-background-radius: 10px;" text="2 - Cartão Débito">
+      <Button fx:id="cartaoDebito" layoutX="74.0" layoutY="193.0" mnemonicParsing="false" onAction="#onBtAction" style="-fx-background-color: #F2F2F2; -fx-background-radius: 10px;" text="2 - Cartão Débito">
          <font>
             <Font size="16.0" />
          </font>
@@ -36,7 +30,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button layoutX="74.0" layoutY="249.0" mnemonicParsing="false" style="-fx-background-color: #F2F2F2; -fx-background-radius: 10px;" text="3 - Cartão Crédito">
+      <Button fx:id="cartaoCredito" layoutX="74.0" layoutY="249.0" mnemonicParsing="false" style="-fx-background-color: #F2F2F2; -fx-background-radius: 10px;" text="3 - Cartão Crédito">
          <font>
             <Font size="16.0" />
          </font>
@@ -44,7 +38,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button layoutX="74.0" layoutY="304.0" mnemonicParsing="false" style="-fx-background-color: #F2F2F2; -fx-background-radius: 10px;" text="4 - Pix">
+      <Button fx:id="pix" layoutX="74.0" layoutY="304.0" mnemonicParsing="false" style="-fx-background-color: #F2F2F2; -fx-background-radius: 10px;" text="4 - Pix">
          <font>
             <Font size="16.0" />
          </font>
