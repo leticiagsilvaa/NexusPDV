@@ -5,13 +5,15 @@ public class Produto {
     private int codigoProd;
     private String categoriaProd;
     private Double valorProd;
+    private int quantidadeEstoque;
     private static int totalProdutos = 0;
 
-    public Produto(String nomeProd, String categoriaProd, Double valorProd){
+    public Produto(String nomeProd, String categoriaProd, Double valorProd, int quantidadeEstoque){
         this.codigoProd = gerarNovoCodigo();
         this.nomeProd = nomeProd;
         this.categoriaProd = categoriaProd;
         this.valorProd = valorProd;
+        this.quantidadeEstoque = quantidadeEstoque;
     }
 
     private int gerarNovoCodigo(){
@@ -30,6 +32,14 @@ public class Produto {
     }
     public String getNomeProd() {
         return nomeProd;
+    }
+
+    public int getQuantidadeEstoque() {
+        return quantidadeEstoque;
+    }
+
+    public void setQuantidadeEstoque(int quantidadeEstoque) {
+        this.quantidadeEstoque = quantidadeEstoque;
     }
 
     public void setValorProd(Double valorProd) {
