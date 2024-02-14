@@ -24,7 +24,16 @@ public class PagamentoDinheiro extends Pagamento {
     }
 
     @Override
-    public void pagar() {
-        setStatus(StatusPedido.COMPRA_CONCLUIDA);
+    public void pagar() throws PagamentoException {
+        if (getValor() <= 0) {
+            throw new PagamentoException("O valor da venda deve ser maior que zero.");
+        }
+
+        if (getValor() <= getVenda().calcularTotal() + troco) {
+            System.out.println("Pagamento em dinheiro realizado. Troco: " + troco);
+            setStatus(StatusPedido.EFETUADO);
+        } else {
+            throw new PagamentoException("Valor recebido insuficiente para realizar a compra.");
+        }
     }
 }
