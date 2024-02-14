@@ -110,9 +110,10 @@ public class RepositorioProduto {
         return null;
     }
 
-    public void add(Produto produto) {
+    public void add(Produto produto, int quantidade) {
         if (quantidadeProdutos < produtos.length) {
             produtos[quantidadeProdutos] = produto;
+            produto.setQuantidadeEstoque(quantidade);
             quantidadeProdutos++;
         }
         updateWriter();
@@ -133,12 +134,13 @@ public class RepositorioProduto {
 
         int numeroLinha = 0;
 
-        for (int j = 0; j < produtos.length; j++) {
+        for (int j = 0; j < quantidadeProdutos; j++) {
             if (produtos[j] != null) {
                 txt[numeroLinha] = produtos[j].getNomeProd();
                 txt[numeroLinha + 1] = produtos[j].getCategoriaProd();
                 txt[numeroLinha + 2] = produtos[j].getValorProd().toString();
-                numeroLinha = numeroLinha + 3;
+                txt[numeroLinha + 3] = Integer.toString(produtos[j].getQuantidadeEstoque());
+                numeroLinha = numeroLinha + 4;
             }
         }
 
