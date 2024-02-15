@@ -13,12 +13,12 @@ public class CadastroProduto {
         this.repositorio = repositorio;
     }
 
-    public void register(Produto produto) throws DuplicadoException {
+    public void register(Produto produto, int quantidade) throws DuplicadoException {
         if (produto == null) {
             throw new IllegalArgumentException("Campos precisam ser preenchidos integralmente");
         } else {
             if (this.repositorio.exists(produto.getCodigoProd())) {
-                this.repositorio.add(produto);
+                this.repositorio.add(produto, quantidade);
             } else {
                 throw new DuplicadoException("Funcionário já cadastrado");
             }

@@ -112,5 +112,27 @@ public class Main {
             System.out.println(" O codigo Pix não pode ser nulo" );
         }
          */
+        // Teste do Estoque
+        RepositorioProduto repositorioProduto = RepositorioProduto.getInstance();
+        Estoque estoque = new Estoque(repositorioProduto);
+
+        // Adicionando alguns produtos ao estoque
+        Produto prod1 = new Produto("Arroz", "Cereais", 5.99, 10);
+        Produto prod2 = new Produto("Feijão", "Cereais", 4.5, 15);
+
+        estoque.adicionarProdutoAoEstoque(prod1, 10);
+        estoque.adicionarProdutoAoEstoque(prod2, 15);
+
+        // Listando produtos no estoque
+        System.out.println("Produtos no estoque após adição:");
+        estoque.listarProdutosNoEstoque();
+
+        // Removendo alguns produtos do estoque
+        estoque.removerProdutoDoEstoque(prod1.getCodigoProd(), 5);
+        estoque.removerProdutoDoEstoque(prod2.getCodigoProd(), 10);
+
+        // Listando produtos no estoque após remoção
+        System.out.println("Produtos no estoque após remoção:");
+        estoque.listarProdutosNoEstoque();
     }
 }

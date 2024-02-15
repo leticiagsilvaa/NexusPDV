@@ -62,6 +62,10 @@ public class Venda {
         return this.troco;
     }
 
+    public Funcionario getFuncionario() {
+        return funcionario;
+    }
+
     public void efetuarPagamento(Pagamento pagamento) throws PagamentoException {
         if (pagamento == null) {
             throw new PagamentoException("Forma de pagamento inválida.");

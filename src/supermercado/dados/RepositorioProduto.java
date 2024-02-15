@@ -113,7 +113,7 @@ public class RepositorioProduto {
     public void add(Produto produto, int quantidade) {
         if (quantidadeProdutos < produtos.length) {
             produtos[quantidadeProdutos] = produto;
-            produto.setQuantidadeEstoque(quantidade);
+            produtos[quantidadeProdutos].setQuantidadeEstoque(produtos[quantidadeProdutos].getQuantidadeEstoque() + quantidade);
             quantidadeProdutos++;
         }
         updateWriter();

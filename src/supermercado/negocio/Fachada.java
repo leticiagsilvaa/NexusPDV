@@ -39,8 +39,8 @@ public class Fachada {
         this.logins.register(login);
     }
 
-    public void cadastrarProdutos(Produto produto) throws DuplicadoException {
-        this.produtos.register(produto);
+    public void cadastrarProdutos(Produto produto, int quantidadeEstoque) throws DuplicadoException {
+        this.produtos.register(produto, quantidadeEstoque);
     }
 
     public void cadastrarVenda(Venda venda) throws DuplicadoException {

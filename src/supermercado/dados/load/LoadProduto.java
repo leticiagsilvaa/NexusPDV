@@ -18,12 +18,17 @@ public class LoadProduto {
             String line = br.readLine();
 
             while (line != null) {
-                String first_parameter = line;
+                String nome = line;
                 line = br.readLine();
-                String second_parameter = line;
+                String categoria = line;
                 line = br.readLine();
-                String third_parameter = line;
-                repositorio.add(new Produto(first_parameter, second_parameter, Double.parseDouble(third_parameter)));
+                double valor = Double.parseDouble(line);
+                line = br.readLine();
+                int quantidade = Integer.parseInt(line);
+
+                Produto produto = new Produto(nome, categoria, valor, quantidade);
+                repositorio.add(produto, quantidade);
+
                 line = br.readLine();
             }
         } catch (IOException e) {
