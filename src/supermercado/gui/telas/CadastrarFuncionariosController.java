@@ -10,6 +10,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import java.io.IOException;
+
+import supermercado.dados.RepositorioFuncionario;
+import supermercado.dados.RepositorioLogin;
+import supermercado.dados.load.LoadFuncionario;
+import supermercado.dados.load.LoadLogin;
 import supermercado.gui.util.Alerts;
 import supermercado.negocio.Fachada;
 import supermercado.negocio.beans.Funcionario;
@@ -42,8 +47,11 @@ public class CadastrarFuncionariosController {
             String login = txt3.getText();
             String senha = txt4.getText();
 
-            //Fachada.getInstance().cadastrarFuncionario(new Funcionario(nome, cpf, new Login(login, senha)));
-            //Fachada.getInstance().cadastrarLogin(new Login(login, senha));
+            RepositorioFuncionario repositorioFuncionario = LoadFuncionario.cadastrarFuncionarios();
+            RepositorioLogin repositorioLogin = LoadLogin.cadastrarLogins();
+
+            repositorioFuncionario.add(new Funcionario(nome, cpf, new Login(login, senha)));
+            repositorioLogin.add(new Login(login, senha));
 
             String texto = "Funcionário cadastrado com sucesso";
 
