@@ -6,19 +6,14 @@ public class Produto {
     private String categoriaProd;
     private Double valorProd;
     private int quantidadeEstoque;
-    private static int totalProdutos = 0;
-
-    public Produto(String nomeProd, String categoriaProd, Double valorProd, int quantidadeEstoque){
-        this.codigoProd = gerarNovoCodigo();
+    public Produto(int codigoProd,String nomeProd, String categoriaProd, Double valorProd, int quantidadeEstoque){
+        this.codigoProd = codigoProd;
         this.nomeProd = nomeProd;
         this.categoriaProd = categoriaProd;
         this.valorProd = valorProd;
         this.quantidadeEstoque = quantidadeEstoque;
     }
 
-    private int gerarNovoCodigo(){
-        return ++totalProdutos;
-    }
     public Double getValorProd() {
         return valorProd;
     }
@@ -58,7 +53,9 @@ public class Produto {
     public String toString() {
         return   nomeProd + "\n" +
                 "Categoria: " + categoriaProd + "\n" +
-                "Valor: " + valorProd + "\n";
+                "Valor: " + valorProd + "\n" +
+                "Quantidade: " + quantidadeEstoque + "\n";
+
     }
 }
 

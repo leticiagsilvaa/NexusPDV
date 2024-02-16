@@ -18,7 +18,7 @@ public class CadastroProduto {
             throw new IllegalArgumentException("Campos precisam ser preenchidos integralmente");
         } else {
             if (this.repositorio.exists(produto.getCodigoProd())) {
-                this.repositorio.add(produto, quantidade);
+                this.repositorio.add(produto);
             } else {
                 throw new DuplicadoException("Funcionário já cadastrado");
             }

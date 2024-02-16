@@ -7,7 +7,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
 
-public class RepositorioVenda implements IRepositorio<Venda> {
+public class RepositorioVenda {
     private Venda vendas[];
     private int quantidadeVendas;
 
@@ -18,7 +18,6 @@ public class RepositorioVenda implements IRepositorio<Venda> {
 
     ;
 
-    @Override
     public Venda[] getAll() {
         for (Venda venda : vendas) {
             if (venda != null) {
@@ -28,7 +27,6 @@ public class RepositorioVenda implements IRepositorio<Venda> {
         return null;
     }
 
-    @Override
     public Venda getOne(int codigo) {
         for (int i = 0; i < vendas.length; i++) {
             if (vendas[i] != null && codigo == vendas[i].getIdVenda()) {
@@ -38,7 +36,6 @@ public class RepositorioVenda implements IRepositorio<Venda> {
         return null;
     }
 
-    @Override
     public void add(Venda venda) {
         if (quantidadeVendas < vendas.length) {
             vendas[quantidadeVendas] = venda;
@@ -47,7 +44,6 @@ public class RepositorioVenda implements IRepositorio<Venda> {
         updateWriter();
     }
 
-    @Override
     public void delete(int codigo) {
         for (int i = 0; i < vendas.length; i++) {
             if (vendas[i] != null && codigo == vendas[i].getIdVenda()) {
@@ -57,8 +53,47 @@ public class RepositorioVenda implements IRepositorio<Venda> {
         updateWriter();
     }
 
+    public void idWriter(String id, String codigo){
+        String path = "src/supermercado/arquivos/dadosTemporarios.txt";
+        String txt[] = new String[1000];
+
+        int numeroLinha = 0;
+
+        txt[numeroLinha] = id;
+        txt[numeroLinha + 1] = codigo;
+
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(path))) {
+            for (String linha : txt) {
+                if (linha != null) {
+                    bw.write(linha);
+                    bw.newLine();
+                }
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void precoTotalWriter(String preco){
+        String path = "src/supermercado/arquivos/dadosTemporarios.txt";
+        String txt[] = new String[3];
+
+        txt[2] = preco;
+
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(path))) {
+            for (String linha : txt) {
+                if (linha != null) {
+                    bw.write(linha);
+                    bw.newLine();
+                }
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public void updateWriter() {
-        String path = "src/supermercado/arquivos/vendasTeste.txt";
+        String path = "src/supermercado/arquivos/venda.txt";
         String txt[] = new String[1000];
 
         int numeroLinha = 0;
@@ -66,11 +101,8 @@ public class RepositorioVenda implements IRepositorio<Venda> {
         for (int j = 0; j < vendas.length; j++) {
             if (vendas[j] != null) {
                 txt[numeroLinha] = String.valueOf(vendas[j].getIdVenda());
-                txt[numeroLinha + 1] = vendas[j].getFuncionario().getNomeFuncionario();
-                txt[numeroLinha + 2] = String.valueOf(vendas[j].getSubtotal());
-                txt[numeroLinha + 3] = String.valueOf(vendas[j].getListaItens());
-                txt[numeroLinha + 4] = String.valueOf(vendas[j].getTroco());
-                numeroLinha = numeroLinha + 5;
+                txt[numeroLinha + 1] = String.valueOf(vendas[j].getFuncionario());
+                numeroLinha = numeroLinha + 2;
             }
         }
 
@@ -86,12 +118,10 @@ public class RepositorioVenda implements IRepositorio<Venda> {
         }
     }
 
-    @Override
     public void update(int codigo) {
 
     }
 
-    @Override
     public boolean exists(int codigo) {
         for (int i = 0; i < vendas.length; i++) {
             if (vendas[i] != null && codigo == vendas[i].getIdVenda()) {

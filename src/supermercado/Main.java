@@ -3,6 +3,7 @@ package supermercado;
 import supermercado.dados.RepositorioFuncionario;
 import supermercado.dados.RepositorioLogin;
 import supermercado.dados.RepositorioProduto;
+import supermercado.dados.load.LoadProduto;
 import supermercado.negocio.CadastroFuncionario;
 import supermercado.negocio.CadastroLogin;
 import supermercado.negocio.CadastroProduto;
@@ -19,9 +20,6 @@ public class Main {
 
         //RepositorioFuncionario repositorioFuncionario = CadastroFuncionario.cadastrarFuncionarios();
         //RepositorioProduto repositorioProduto = CadastroProduto.cadastrarProdutos();
-
-        System.out.println(Arrays.toString(Fachada.getInstance().getAll()));
-
 
         //Login input_login = UI.systemLogin();
         //String user_funcionario = repositorioLogin.loginMatch(input_login);
@@ -111,14 +109,14 @@ public class Main {
         } catch (PagamentoException e) {
             System.out.println(" O codigo Pix não pode ser nulo" );
         }
-         */
+
         // Teste do Estoque
-        RepositorioProduto repositorioProduto = RepositorioProduto.getInstance();
+        RepositorioProduto repositorioProduto = new RepositorioProduto(100);
         Estoque estoque = new Estoque(repositorioProduto);
 
         // Adicionando alguns produtos ao estoque
-        Produto prod1 = new Produto("Arroz", "Cereais", 5.99, 10);
-        Produto prod2 = new Produto("Feijão", "Cereais", 4.5, 15);
+        Produto prod1 = new Produto("Arroz", "Cereais", 5.99);
+        Produto prod2 = new Produto("Feijão", "Cereais", 4.5);
 
         estoque.adicionarProdutoAoEstoque(prod1, 10);
         estoque.adicionarProdutoAoEstoque(prod2, 15);
@@ -134,5 +132,6 @@ public class Main {
         // Listando produtos no estoque após remoção
         System.out.println("Produtos no estoque após remoção:");
         estoque.listarProdutosNoEstoque();
+        */
     }
 }

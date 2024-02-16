@@ -10,7 +10,7 @@ import java.io.IOException;
 public class LoadProduto {
     public static RepositorioProduto cadastrarProdutos(){
 
-        RepositorioProduto repositorio = new RepositorioProduto(50);
+        RepositorioProduto repositorio = new RepositorioProduto(200);
 
         String path_produtos = "src/supermercado/arquivos/produtos.txt";
 
@@ -18,6 +18,8 @@ public class LoadProduto {
             String line = br.readLine();
 
             while (line != null) {
+                int codigo = Integer.parseInt(line);
+                line = br.readLine();
                 String nome = line;
                 line = br.readLine();
                 String categoria = line;
@@ -26,8 +28,8 @@ public class LoadProduto {
                 line = br.readLine();
                 int quantidade = Integer.parseInt(line);
 
-                Produto produto = new Produto(nome, categoria, valor, quantidade);
-                repositorio.add(produto, quantidade);
+                Produto produto = new Produto(codigo, nome, categoria, valor, quantidade);
+                repositorio.add(produto);
 
                 line = br.readLine();
             }

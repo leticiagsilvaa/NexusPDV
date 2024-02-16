@@ -10,12 +10,11 @@ import java.util.Scanner;
 public class RepositorioProduto {
     private Produto produtos[];
     private int quantidadeProdutos;
-    private static RepositorioProduto instance;
-
     public RepositorioProduto(int numeroMaximo) {
         produtos = new Produto[numeroMaximo];
         quantidadeProdutos = 0;
     }
+    /*
 
     public static RepositorioProduto getInstance() {
         if (instance == null) {
@@ -41,7 +40,7 @@ public class RepositorioProduto {
             if (ois != null) {
                 try {
                     ois.close();
-                } catch (IOException e) {/* Silent exception */
+                } catch (IOException e) { Silent exception
                 }
             }
         }
@@ -68,11 +67,13 @@ public class RepositorioProduto {
                 try {
                     oos.close();
                 } catch (IOException e) {
-                    /* Silent */
+                     Silent
                 }
             }
         }
     }
+
+    */
 
     public Produto[] findByName(String nomeProd) {
         Produto encontrado[] = new Produto[quantidadeProdutos];
@@ -110,10 +111,9 @@ public class RepositorioProduto {
         return null;
     }
 
-    public void add(Produto produto, int quantidade) {
+    public void add(Produto produto) {
         if (quantidadeProdutos < produtos.length) {
             produtos[quantidadeProdutos] = produto;
-            produtos[quantidadeProdutos].setQuantidadeEstoque(produtos[quantidadeProdutos].getQuantidadeEstoque() + quantidade);
             quantidadeProdutos++;
         }
         updateWriter();
@@ -129,18 +129,19 @@ public class RepositorioProduto {
     }
 
     public void updateWriter() {
-        String path = "src/supermercado/arquivos/produtosTeste.txt";
-        String txt[] = new String[150];
+        String path = "src/supermercado/arquivos/produtos.txt";
+        String txt[] = new String[200];
 
         int numeroLinha = 0;
 
         for (int j = 0; j < quantidadeProdutos; j++) {
             if (produtos[j] != null) {
-                txt[numeroLinha] = produtos[j].getNomeProd();
-                txt[numeroLinha + 1] = produtos[j].getCategoriaProd();
-                txt[numeroLinha + 2] = produtos[j].getValorProd().toString();
-                txt[numeroLinha + 3] = Integer.toString(produtos[j].getQuantidadeEstoque());
-                numeroLinha = numeroLinha + 4;
+                txt[numeroLinha] = String.valueOf(produtos[j].getCodigoProd());
+                txt[numeroLinha + 1] = produtos[j].getNomeProd();
+                txt[numeroLinha + 2] = produtos[j].getCategoriaProd();
+                txt[numeroLinha + 3] = produtos[j].getValorProd().toString();
+                txt[numeroLinha + 4] = String.valueOf(produtos[j].getQuantidadeEstoque());
+                numeroLinha = numeroLinha + 5;
             }
         }
 

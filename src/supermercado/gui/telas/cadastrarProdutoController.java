@@ -8,6 +8,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import supermercado.dados.RepositorioProduto;
+import supermercado.dados.load.LoadProduto;
 import supermercado.gui.util.Alerts;
 import supermercado.negocio.Fachada;
 import supermercado.negocio.beans.Produto;
@@ -43,9 +45,8 @@ public class cadastrarProdutoController {
             String categoria = txt3.getText();
             String valor = txt4.getText();
             String quantidade = txt5.getText();
-
-            String quantidadeEstoque = null;
-            Fachada.getInstance().cadastrarProdutos(new Produto(nome,categoria, Double.parseDouble(valor), Integer.parseInt(quantidade)), Integer.parseInt(quantidadeEstoque));
+            RepositorioProduto repositorioProduto = LoadProduto.cadastrarProdutos();
+            repositorioProduto.add(new Produto(Integer.parseInt(codigo),nome,categoria, Double.parseDouble(valor), Integer.parseInt(quantidade)));
 
             String texto = "Produto cadastrado com sucesso";
 

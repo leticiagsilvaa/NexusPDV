@@ -20,7 +20,7 @@ public class Estoque {
             repositorioProduto.update(produtoExistente.getCodigoProd());
         } else {
             produto.setQuantidadeEstoque(quantidade);
-            repositorioProduto.add(produto, quantidade);
+            repositorioProduto.add(produto);
         }
     }
 

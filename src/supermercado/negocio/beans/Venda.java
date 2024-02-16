@@ -7,7 +7,7 @@ public class Venda {
 
     private final int idVenda;
     private static int totalIdVenda;
-    private final List<Produto> listaItens;
+    private List<Produto> listaItens;
     private Double subtotal = 0.0;
     private Double troco;
     private Pagamento pagamento;
@@ -15,15 +15,14 @@ public class Venda {
     private Funcionario funcionario;
 
     public Venda(int idCaixa, Funcionario funcionario) {
-        Venda.totalIdVenda++;
-        this.idVenda = totalIdVenda;
+        this.idVenda = getIdVenda();
         this.idCaixa = idCaixa;
         this.funcionario = funcionario;
         this.listaItens = new ArrayList<>();
     }
 
     public int getIdVenda() {
-        return idVenda;
+        return totalIdVenda++;
     }
 
     public List<Produto> getListaItens() {
@@ -71,10 +70,8 @@ public class Venda {
             throw new PagamentoException("Forma de pagamento inválida.");
         }
 
-        //Realizar o pagamento.
         pagamento.pagar();
 
-        //Calcular o troco, e se for pagamento em dinheiro:
         if (pagamento instanceof PagamentoDinheiro) {
             Double total = calcularTotal();
             PagamentoDinheiro pagamentoDinheiro = (PagamentoDinheiro) pagamento;

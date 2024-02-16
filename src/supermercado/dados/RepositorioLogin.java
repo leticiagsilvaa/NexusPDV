@@ -4,10 +4,11 @@ import supermercado.negocio.beans.Login;
 
 import java.io.*;
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class RepositorioLogin {
 
-    private static RepositorioLogin instance;
+    //private static RepositorioLogin instance;
     private int quantidadeLogins;
     private Login logins[];
 
@@ -15,6 +16,8 @@ public class RepositorioLogin {
         logins = new Login[numeroMaximo];
         quantidadeLogins = 0;
     }
+
+    /*
 
     public static RepositorioLogin getInstance() {
         if (instance == null) {
@@ -42,6 +45,7 @@ public class RepositorioLogin {
                 try {
                     ois.close();
                 } catch (IOException e) {/* Silent exception */
+    /*
                 }
             }
         }
@@ -68,11 +72,12 @@ public class RepositorioLogin {
                 try {
                     oos.close();
                 } catch (IOException e) {
-                    /* Silent */
+                    Silent
                 }
             }
         }
     }
+    */
 
 
     public Login getAll() {
@@ -130,15 +135,35 @@ public class RepositorioLogin {
         }
     }
 
+    public void updateWriter() {
+        String path = "src/supermercado/arquivos/loginTeste.txt";
+        String txt[] = new String[150];
 
-    public void update(int codigo) {
-        for (int i = 0; i < logins.length; i++) {
-            if (logins[i] != null && codigo == logins[i].getCodigo()) {
-                //ver como será o update login
+        int numeroLinha = 0;
+
+        for (int j = 0; j < logins.length; j++) {
+            if (logins[j] != null) {
+                txt[numeroLinha] = logins[j].getLogin();
+                txt[numeroLinha + 1] = logins[j].getSenha();
+                numeroLinha = numeroLinha + 2;
             }
+        }
+
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(path))) {
+            for (String linha : txt) {
+                if (linha != null) {
+                    bw.write(linha);
+                    bw.newLine();
+                }
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
+    public void update(int codigo) {
+
+    }
     public boolean exists(int codigo) {
         for (int i = 0; i < logins.length; i++) {
             if (logins[i] != null && codigo == logins[i].getCodigo()) {
