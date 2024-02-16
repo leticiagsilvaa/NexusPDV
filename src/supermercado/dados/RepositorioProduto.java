@@ -1,5 +1,7 @@
 package supermercado.dados;
 
+import supermercado.dados.load.LoadLogin;
+import supermercado.dados.load.LoadProduto;
 import supermercado.negocio.beans.Funcionario;
 import supermercado.negocio.beans.Produto;
 
@@ -10,18 +12,21 @@ import java.util.Scanner;
 public class RepositorioProduto {
     private Produto produtos[];
     private int quantidadeProdutos;
+
+    private static RepositorioProduto instance;
     public RepositorioProduto(int numeroMaximo) {
         produtos = new Produto[numeroMaximo];
         quantidadeProdutos = 0;
     }
-    /*
 
     public static RepositorioProduto getInstance() {
         if (instance == null) {
-            instance = lerDoArquivo();
+            instance = LoadProduto.cadastrarProdutos();
         }
         return instance;
     }
+
+    /*
 
     private static RepositorioProduto lerDoArquivo() {
         RepositorioProduto instanciaLocal = null;

@@ -8,9 +8,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.fxml.FXML;
 import javafx.stage.Stage;
+import supermercado.dados.RepositorioProduto;
 import supermercado.gui.util.Alerts;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 public class MenuController {
     @FXML
@@ -29,6 +31,8 @@ public class MenuController {
                 abrirNovaTela("cadastrarFuncionario.fxml");
             }  else if (txt.equals("0")) {
                 abrirNovaTela("venda.fxml");
+            }  else if (txt.equals("4")) {
+                System.out.println(Arrays.toString(RepositorioProduto.getInstance().getAll()));
             } else {
                 Alerts.showAlert("Não encontrado", "Error", "Funcionalidade não implementada", Alert.AlertType.INFORMATION);
             }
