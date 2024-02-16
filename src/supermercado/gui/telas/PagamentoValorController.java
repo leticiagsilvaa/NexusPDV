@@ -36,15 +36,19 @@ public class PagamentoValorController {
 
 
     public void btRetirar() throws IOException {
-        if(lbl.getText().equals("0.0")){
-            Alerts.showAlert("INFORMAÇÕES", "Pagamento efetuado", "Imprimindo nota fiscal", Alert.AlertType.INFORMATION);
-            //imprimir nota fiscal
-            abrirNovaTela();
-        }
         Double totalPago = Double.parseDouble(txt.getText());
         Double total = Double.parseDouble(lbl.getText());
-        total = total - totalPago;
-        lbl.setText(String.valueOf(total));
+        Double subtotal = total - totalPago;
+        lbl.setText(String.valueOf(subtotal));
+
+        if(Double.parseDouble(lbl.getText()) < 0.0) {
+            Alerts.showAlert("INFORMAÇÕES", "Pagamento efetuado", "Imprimindo nota fiscal", Alert.AlertType.INFORMATION);
+            Double troco = totalPago - total;
+            String texto = String.valueOf(troco + "$");
+            Alerts.showAlert("TROCO", "Pagamento efetuado", texto, Alert.AlertType.INFORMATION);
+                    //imprimir nota fiscal
+                    abrirNovaTela();
+        }
 
     }
 

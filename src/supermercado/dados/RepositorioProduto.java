@@ -26,60 +26,6 @@ public class RepositorioProduto {
         return instance;
     }
 
-    /*
-
-    private static RepositorioProduto lerDoArquivo() {
-        RepositorioProduto instanciaLocal = null;
-
-        File in = new File("produtos.txt");
-        FileInputStream fis = null;
-        ObjectInputStream ois = null;
-        try {
-            fis = new FileInputStream(in);
-            ois = new ObjectInputStream(fis);
-            Object o = ois.readObject();
-            instanciaLocal = (RepositorioProduto) o;
-        } catch (Exception e) {
-            instanciaLocal = new RepositorioProduto(100);
-        } finally {
-            if (ois != null) {
-                try {
-                    ois.close();
-                } catch (IOException e) { Silent exception
-                }
-            }
-        }
-
-        return instanciaLocal;
-    }
-
-    public void salvarArquivo() {
-        if (instance == null) {
-            return;
-        }
-        File out = new File("produtos.txt");
-        FileOutputStream fos = null;
-        ObjectOutputStream oos = null;
-
-        try {
-            fos = new FileOutputStream(out);
-            oos = new ObjectOutputStream(fos);
-            oos.writeObject(instance);
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if (oos != null) {
-                try {
-                    oos.close();
-                } catch (IOException e) {
-                     Silent
-                }
-            }
-        }
-    }
-
-    */
-
     public Produto[] findByName(String nomeProd) {
         Produto encontrado[] = new Produto[quantidadeProdutos];
         int produtoEncontrado = 0;
@@ -96,7 +42,14 @@ public class RepositorioProduto {
         return null;
     }
 
-    ;
+    public void tirarProduto(int codigo, int quantidade) {
+        for (int i = 0; i < quantidadeProdutos; i++) {
+            if (produtos[i] != null && codigo == produtos[i].getCodigoProd()) {
+                produtos[i].setQuantidadeEstoque(produtos[i].getQuantidadeEstoque() - quantidade);
+            }
+        }
+        updateWriter();
+    }
 
     public Produto[] getAll() {
         for (Produto produto : produtos) {

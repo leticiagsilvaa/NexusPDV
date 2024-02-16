@@ -25,6 +25,10 @@ public class Venda {
         return totalIdVenda++;
     }
 
+    public void setListaItens(List<Produto> produto) {
+        this.listaItens = listaItens;
+    }
+
     public List<Produto> getListaItens() {
         return listaItens;
     }
@@ -35,6 +39,10 @@ public class Venda {
 
     public Double getSubtotal() {
         return subtotal;
+    }
+
+    public void setSubtotal() {
+        this.subtotal = subtotal;
     }
 
     public Double calcularTotal() {

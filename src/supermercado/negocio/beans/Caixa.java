@@ -10,7 +10,7 @@ public class Caixa {
     private Venda venda;
     private Funcionario funcionario;
 
-    public Caixa(String nomeFuncionario){
+    public Caixa(Funcionario funcionario){
         Caixa.totalCaixa++;
         idCaixa = totalCaixa;
         this.funcionario = funcionario;

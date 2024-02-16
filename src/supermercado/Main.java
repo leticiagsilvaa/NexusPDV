@@ -19,34 +19,33 @@ public class Main {
     public static void main(String args[]) {
 
         //RepositorioFuncionario repositorioFuncionario = CadastroFuncionario.cadastrarFuncionarios();
-        //RepositorioProduto repositorioProduto = CadastroProduto.cadastrarProdutos();
+        RepositorioProduto.getInstance();
 
         //Login input_login = UI.systemLogin();
         //String user_funcionario = repositorioLogin.loginMatch(input_login);
 
-        //Funcionario funcionario = repositorioFuncionario.findByUser(user_funcionario);
+//       Funcionario funcionario = RepositorioFuncionario.getInstance().findByUser("carlos.oliveira");
+
 
        // System.out.println(funcionario.getLogin() + funcionario.getNomeFuncionario());
 
-        //Teste Caixa e Venda
-        //Caixa caixa1 = new Caixa(funcionario.getNomeFuncionario());
-       // caixa1.novaVenda();
-       // Produto arroz = repositorioProduto.findByName("Arroz")[0];
-        //Produto alface = repositorioProduto.getOne(22);
-        //caixa1.getVenda().adicionarItemLista(arroz, 2);
-       // caixa1.getVenda().adicionarItemLista(alface, 3);
-        //caixa1.getVenda().removerItem(arroz); ainda nao funciona
-
-       // caixa1.finalizarVenda();
-
-       // Caixa caixa2 = new Caixa(funcionario.getNomeFuncionario());
-       // caixa2.novaVenda();
-       // Produto prod1 = repositorioProduto.getOne(11);
-       // Produto prod2 = repositorioProduto.getOne(22);
-       // caixa2.getVenda().adicionarItemLista(prod1, 1);
-       // caixa2.getVenda().adicionarItemLista(prod2, 3);
-
-       // caixa2.finalizarVenda();
+//        Caixa caixa1 = new Caixa(funcionario);
+//        caixa1.novaVenda();
+//        Produto arroz = RepositorioProduto.getInstance().findByName("Arroz")[0];
+//        Produto alface = RepositorioProduto.getInstance().getOne(22);
+//        caixa1.getVenda().adicionarItemLista(arroz, 2);
+//        caixa1.getVenda().adicionarItemLista(alface, 3);
+//
+//        caixa1.finalizarVenda();
+//
+//       Caixa caixa2 = new Caixa(funcionario);
+//       caixa2.novaVenda();
+//        Produto prod1 = RepositorioProduto.getInstance().getOne(11);
+//       Produto prod2 = RepositorioProduto.getInstance().getOne(22);
+//       caixa2.getVenda().adicionarItemLista(prod1, 1);
+//        caixa2.getVenda().adicionarItemLista(prod2, 3);
+//
+//       caixa2.finalizarVenda();
 
         /*
         //REPOSITORIO DE FUNCIONARIOS

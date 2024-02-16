@@ -157,7 +157,7 @@ Laticínios
 Sabão em Pó
 Limpeza
 5.25
-100
+98
 33
 Café em Grãos
 Bebidas
@@ -167,7 +167,7 @@ Bebidas
 Condicionador
 Higiene
 4.99
-100
+98
 35
 Presunto
 Frios

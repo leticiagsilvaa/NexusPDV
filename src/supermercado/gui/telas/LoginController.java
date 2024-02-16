@@ -14,8 +14,6 @@ import java.io.IOException;
 import supermercado.dados.RepositorioFuncionario;
 import supermercado.dados.RepositorioLogin;
 import supermercado.dados.RepositorioVenda;
-import supermercado.dados.load.LoadFuncionario;
-import supermercado.dados.load.LoadLogin;
 import supermercado.gui.util.Alerts;
 import supermercado.negocio.beans.Funcionario;
 import supermercado.negocio.beans.Login;

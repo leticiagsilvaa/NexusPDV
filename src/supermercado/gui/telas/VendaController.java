@@ -86,8 +86,8 @@ public class VendaController {
         System.out.println(id + "" + codigoFuncionario);
 
         Funcionario funcionario = RepositorioFuncionario.getInstance().getOne(codigoFuncionario);
-        List<Integer> itens = new ArrayList<>();
-        itens.add(produto.getCodigoProd());
+        List<Produto> itens = new ArrayList<>();
+        itens.add(produto);
 
         String quantidade = txt1.getText();
 
@@ -95,7 +95,7 @@ public class VendaController {
             throw new RuntimeException("Venda impossível");
         }
 
-        produto.setQuantidadeEstoque(produto.getQuantidadeEstoque() - Integer.parseInt(quantidade));
+        RepositorioProduto.getInstance().tirarProduto(produto.getCodigoProd(), Integer.parseInt(quantidade));
         lbl1.setText(produto.getNomeProd());
         lbl2.setText(String.valueOf(produto.getValorProd()));
 
@@ -105,7 +105,7 @@ public class VendaController {
         lbl4.setText(itens.toString());
 
         Venda venda = new Venda(id, funcionario);
-        venda.adicionarItemLista(produto, Integer.parseInt(quantidade));
+        venda.setListaItens(itens);
     }
 
     private int[] lerArquivo(){
