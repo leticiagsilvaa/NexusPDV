@@ -11,22 +11,17 @@ import javafx.stage.Stage;
 import supermercado.dados.RepositorioFuncionario;
 import supermercado.dados.RepositorioProduto;
 import supermercado.dados.RepositorioVenda;
-import supermercado.dados.load.LoadFuncionario;
-import supermercado.dados.load.LoadProduto;
-import supermercado.dados.load.LoadVenda;
 import supermercado.negocio.beans.Funcionario;
-import supermercado.negocio.beans.Login;
 import supermercado.negocio.beans.Produto;
 import supermercado.negocio.beans.Venda;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.*;
 import java.text.DecimalFormat;
 
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class VendaController {
     double preco = 0;
@@ -61,8 +56,8 @@ public class VendaController {
         try {
             String codigo = txt2.getText();
 
-            if(codigo.equals("m")){
-                abrirNovaTelaMenu();
+            if (codigo.equals("m")) {
+                abrirNovaTela("menu.fxml");
             } else {
                 searchProductCode(Integer.parseInt(codigo));
             }
@@ -71,28 +66,32 @@ public class VendaController {
         }
     }
 
-    public void onBtFinalizarAction(){
-        try{
+    public void onBtFinalizarAction() {
+        try {
             String preco = lbl3.getText();
-            RepositorioVenda repositorioVenda = new RepositorioVenda(1000);
-            repositorioVenda.precoTotalWriter(preco);
-            abrirNovaTela();
-        } catch (Exception e){
+            RepositorioVenda.getInstance().precoTotalWriter(preco);
+            abrirNovaTela("pagamento.fxml");
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    public void searchProductCode(int codigo) {
-        DecimalFormat df = new DecimalFormat("0.00");
-        RepositorioProduto repositorioProduto = LoadProduto.cadastrarProdutos();
-        RepositorioFuncionario funcionario = LoadFuncionario.cadastrarFuncionarios();
 
-        Produto produto = repositorioProduto.getOne(codigo);
+    public void searchProductCode(int codigoProduto) {
+        DecimalFormat df = new DecimalFormat("0.00");
+
+        Produto produto = RepositorioProduto.getInstance().getOne(codigoProduto);
+        int[] dadosArquivo = lerArquivo();
+        int id = dadosArquivo[0];
+        int codigoFuncionario = dadosArquivo[1];
+        System.out.println(id + "" + codigoFuncionario);
+
+        Funcionario funcionario = RepositorioFuncionario.getInstance().getOne(codigoFuncionario);
         List<Integer> itens = new ArrayList<>();
         itens.add(produto.getCodigoProd());
 
         String quantidade = txt1.getText();
 
-        if(produto.getQuantidadeEstoque() < Integer.parseInt(quantidade)){
+        if (produto.getQuantidadeEstoque() < Integer.parseInt(quantidade)) {
             throw new RuntimeException("Venda impossível");
         }
 
@@ -105,54 +104,28 @@ public class VendaController {
         lbl3.setText(String.valueOf(precoFormatado));
         lbl4.setText(itens.toString());
 
-        //Venda venda = new Venda(lerId(), funcionario.getOne(lerCodigo()));
-        //venda.adicionarItemLista(produto, Integer.parseInt(quantidade));
+        Venda venda = new Venda(id, funcionario);
+        venda.adicionarItemLista(produto, Integer.parseInt(quantidade));
+    }
+
+    private int[] lerArquivo(){
+        try {
+            Scanner scanner = new Scanner(new File("src/supermercado/arquivos/dadosTemporarios.txt"));
+            int id = scanner.nextInt();
+            int codigo = scanner.nextInt();
+            scanner.close();
+            int[] i = {id,codigo};
+            return i;
+        } catch (FileNotFoundException e) {
+            System.err.println("Arquivo não encontrado: ");
+            e.printStackTrace();
+            return null;
         }
+    }
 
+    private void abrirNovaTela(String arquivo) throws IOException {
 
-    private int lerId() {
-        String path = "src/supermercado/arquivos/venda.txt";
-        int id = 0;
-        int codigo = 0;
-
-        try (BufferedReader br = new BufferedReader(new FileReader(path))) {
-            String line = br.readLine();
-
-            while (line != null) {
-                id = Integer.parseInt(line);
-                br.readLine();
-                codigo = Integer.parseInt(line);
-            }
-
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
-        return id;
-    };
-
-    private int lerCodigo() {
-        String path = "src/supermercado/arquivos/venda.txt";
-        int id = 0;
-        int codigo = 0;
-
-        try (BufferedReader br = new BufferedReader(new FileReader(path))) {
-            String line = br.readLine();
-
-            while (line != null) {
-                id = Integer.parseInt(line);
-                br.readLine();
-                codigo = Integer.parseInt(line);
-            }
-
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
-        return codigo;
-    };
-
-    private void abrirNovaTelaMenu() throws IOException {
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("menu.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(arquivo));
         Parent root = loader.load();
 
         Scene scene = new Scene(root);
@@ -163,20 +136,4 @@ public class VendaController {
 
         stage.show();
     }
-
-    private void abrirNovaTela() throws IOException {
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("pagamento.fxml"));
-        Parent root = loader.load();
-
-        Scene scene = new Scene(root);
-
-        Stage stage = (Stage) btPesquisar.getScene().getWindow();
-
-        stage.setScene(scene);
-
-        stage.show();
-    }
-
-
 }

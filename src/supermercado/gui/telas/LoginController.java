@@ -19,6 +19,7 @@ import supermercado.dados.load.LoadLogin;
 import supermercado.gui.util.Alerts;
 import supermercado.negocio.beans.Funcionario;
 import supermercado.negocio.beans.Login;
+import supermercado.negocio.beans.Venda;
 
 public class LoginController {
 
@@ -41,15 +42,12 @@ public class LoginController {
             String login = txt2.getText();
             String senha = txt3.getText();
 
-            RepositorioFuncionario repositorioFuncionario = LoadFuncionario.cadastrarFuncionarios();
-            RepositorioLogin repositorioLogin = LoadLogin.cadastrarLogins();
-            RepositorioVenda repositorioVenda = new RepositorioVenda(1000);
+            String user_funcionario = RepositorioLogin.getInstance().loginMatch(new Login(login,senha));
 
-            String user_funcionario = repositorioLogin.loginMatch(new Login(login,senha));
+            Funcionario funcionario = RepositorioFuncionario.getInstance().findByUser(user_funcionario);
 
-            Funcionario funcionario = repositorioFuncionario.findByUser(user_funcionario);
-
-            repositorioVenda.idWriter(caixa, String.valueOf(funcionario.getCodigoFuncionario()));
+            RepositorioVenda.getInstance().add(new Venda(Integer.parseInt(caixa), new Funcionario(funcionario.getNomeFuncionario(), funcionario.getCpfFuncionario(), new Login(login, senha))));
+            RepositorioVenda.getInstance().idWriter(caixa, String.valueOf(funcionario.getCodigoFuncionario()));
 
             String texto = "Caixa " + caixa + " aberto " + "\nAtendido pelo funcionário " + funcionario.getNomeFuncionario() + "\nCódigo: " + funcionario.getCodigoFuncionario();
 

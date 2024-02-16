@@ -1,5 +1,8 @@
 package supermercado.dados;
 
+import supermercado.dados.load.LoadProduto;
+import supermercado.dados.load.LoadVenda;
+import supermercado.negocio.beans.Produto;
 import supermercado.negocio.beans.Venda;
 
 import java.io.BufferedWriter;
@@ -11,12 +14,19 @@ public class RepositorioVenda {
     private Venda vendas[];
     private int quantidadeVendas;
 
+    private static RepositorioVenda instance;
+
     public RepositorioVenda(int numeroMaximo) {
         vendas = new Venda[numeroMaximo];
         quantidadeVendas = 0;
     }
 
-    ;
+    public static RepositorioVenda getInstance() {
+        if (instance == null) {
+            instance = LoadVenda.cadastrarVenda();
+        }
+        return instance;
+    }
 
     public Venda[] getAll() {
         for (Venda venda : vendas) {
@@ -41,7 +51,6 @@ public class RepositorioVenda {
             vendas[quantidadeVendas] = venda;
             quantidadeVendas++;
         }
-        updateWriter();
     }
 
     public void delete(int codigo) {
@@ -53,9 +62,13 @@ public class RepositorioVenda {
         updateWriter();
     }
 
-    public void idWriter(String id, String codigo){
+    public void idWriter(String id, String codigo) {
         String path = "src/supermercado/arquivos/dadosTemporarios.txt";
-        String txt[] = new String[1000];
+        String txt[] = new String[10];
+
+        int dados[] = new int[2];
+        dados[0] = Integer.parseInt(id);
+        dados[1] = Integer.parseInt(codigo);
 
         int numeroLinha = 0;
 
@@ -74,11 +87,11 @@ public class RepositorioVenda {
         }
     }
 
-    public void precoTotalWriter(String preco){
-        String path = "src/supermercado/arquivos/dadosTemporarios.txt";
-        String txt[] = new String[3];
+    public void precoTotalWriter(String preco) {
+        String path = "src/supermercado/arquivos/preco.txt";
+        String txt[] = new String[1];
 
-        txt[2] = preco;
+        txt[0] = preco;
 
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(path))) {
             for (String linha : txt) {

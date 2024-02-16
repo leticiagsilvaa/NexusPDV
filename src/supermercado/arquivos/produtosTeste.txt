@@ -1,8 +1,0 @@
-Arroz
-Cereais
-5.99
-20
-Feijão
-Cereais
-4.5
-30

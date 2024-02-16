@@ -1,5 +1,6 @@
 package supermercado.dados;
 
+import supermercado.dados.load.LoadLogin;
 import supermercado.negocio.beans.Login;
 
 import java.io.*;
@@ -8,7 +9,7 @@ import java.util.Scanner;
 
 public class RepositorioLogin {
 
-    //private static RepositorioLogin instance;
+    private static RepositorioLogin instance;
     private int quantidadeLogins;
     private Login logins[];
 
@@ -17,67 +18,13 @@ public class RepositorioLogin {
         quantidadeLogins = 0;
     }
 
-    /*
 
     public static RepositorioLogin getInstance() {
         if (instance == null) {
-            instance = lerDoArquivo();
+            instance = LoadLogin.cadastrarLogins();
         }
-        salvarArquivo();
         return instance;
     }
-
-    private static RepositorioLogin lerDoArquivo() {
-        RepositorioLogin instanciaLocal = null;
-
-        File in = new File("login.dat");
-        FileInputStream fis = null;
-        ObjectInputStream ois = null;
-        try {
-            fis = new FileInputStream(in);
-            ois = new ObjectInputStream(fis);
-            Object o = ois.readObject();
-            instanciaLocal = (RepositorioLogin) o;
-        } catch (Exception e) {
-            instanciaLocal = new RepositorioLogin(100);
-        } finally {
-            if (ois != null) {
-                try {
-                    ois.close();
-                } catch (IOException e) {/* Silent exception */
-    /*
-                }
-            }
-        }
-
-        return instanciaLocal;
-    }
-
-    public static void salvarArquivo() {
-        if (instance == null) {
-            return;
-        }
-        File out = new File("login.dat");
-        FileOutputStream fos = null;
-        ObjectOutputStream oos = null;
-
-        try {
-            fos = new FileOutputStream(out);
-            oos = new ObjectOutputStream(fos);
-            oos.writeObject(instance);
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if (oos != null) {
-                try {
-                    oos.close();
-                } catch (IOException e) {
-                    Silent
-                }
-            }
-        }
-    }
-    */
 
 
     public Login getAll() {
@@ -124,6 +71,7 @@ public class RepositorioLogin {
             logins[quantidadeLogins] = login;
             quantidadeLogins++;
         }
+        updateWriter();
     }
 
 
@@ -133,6 +81,7 @@ public class RepositorioLogin {
                 logins[i] = null;
             }
         }
+        updateWriter();
     }
 
     public void updateWriter() {

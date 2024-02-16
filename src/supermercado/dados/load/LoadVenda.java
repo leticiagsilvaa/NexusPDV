@@ -20,7 +20,7 @@ public class LoadVenda {
             String line = br.readLine();
 
             while (line != null) {
-                int id = Integer.parseInt(line);
+                String id = line;
                 line = br.readLine();
                 String nome = line;
                 line = br.readLine();
@@ -29,8 +29,7 @@ public class LoadVenda {
                 String login = line;
                 line = br.readLine();
                 String pass = line;
-                line = br.readLine();
-                repositorio.add(new Venda(id, new Funcionario(nome,cpf,new Login(login,pass))));
+                repositorio.add(new Venda(Integer.parseInt(id), new Funcionario(nome,cpf,new Login(login,pass))));
                 line = br.readLine();
             }
         } catch (IOException e) {

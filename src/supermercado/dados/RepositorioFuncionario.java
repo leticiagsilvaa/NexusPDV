@@ -1,5 +1,6 @@
 package supermercado.dados;
 
+import supermercado.dados.load.LoadFuncionario;
 import supermercado.negocio.beans.Funcionario;
 import supermercado.negocio.beans.Login;
 
@@ -19,73 +20,10 @@ public class RepositorioFuncionario {
 
     public static RepositorioFuncionario getInstance() {
         if (instance == null) {
-            instance = lerDoArquivo();
+            instance = LoadFuncionario.cadastrarFuncionarios();
         }
         return instance;
     }
-
-    private static RepositorioFuncionario lerDoArquivo() {
-        RepositorioFuncionario instanciaLocal = null;
-
-        File in = new File("funcionarios.txt");
-        FileInputStream fis = null;
-        ObjectInputStream ois = null;
-        try {
-            fis = new FileInputStream(in);
-            ois = new ObjectInputStream(fis);
-            Object o = ois.readObject();
-            instanciaLocal = (RepositorioFuncionario) o;
-        } catch (Exception e) {
-            instanciaLocal = new RepositorioFuncionario(100);
-        } finally {
-            if (ois != null) {
-                try {
-                    ois.close();
-                } catch (IOException e) {/* Silent exception */
-                }
-            }
-        }
-
-        return instanciaLocal;
-    }
-
-    public void salvarArquivo() {
-        if (instance == null) {
-            return;
-        }
-        File out = new File("funcionarios.txt");
-        FileOutputStream fos = null;
-        ObjectOutputStream oos = null;
-
-        try {
-            fos = new FileOutputStream(out);
-            oos = new ObjectOutputStream(fos);
-            oos.writeObject(instance);
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if (oos != null) {
-                try {
-                    oos.close();
-                } catch (IOException e) {
-                    /* Silent */
-                }
-            }
-        }
-    }
-
-
-    public Funcionario[] getAll() {
-        for (Funcionario funcionario : funcionarios) {
-            if (funcionario != null && quantidadeFuncionarios > 0) {
-                return Arrays.copyOf(funcionarios, quantidadeFuncionarios);
-            }
-        }
-        return null;
-    }
-
-    ;
-
 
     public Funcionario getOne(int codigo) {
         for (int i = 0; i < funcionarios.length; i++) {
@@ -96,7 +34,6 @@ public class RepositorioFuncionario {
         return null;
     }
 
-    ;
 
     public Funcionario[] findByName(String name) {
         Funcionario encontrado[] = new Funcionario[quantidadeFuncionarios];
@@ -114,7 +51,6 @@ public class RepositorioFuncionario {
         return null;
     }
 
-    ;
 
     public Funcionario findByUser(String login) {
         for (int i = 0; i < quantidadeFuncionarios; i++) {
@@ -125,8 +61,6 @@ public class RepositorioFuncionario {
         return null;
     }
 
-    ;
-
 
     public void add(Funcionario funcionario) {
         if (quantidadeFuncionarios < funcionarios.length) {
@@ -135,8 +69,6 @@ public class RepositorioFuncionario {
         }
         updateWriter();
     }
-
-    ;
 
 
     public void delete(int codigo) {
