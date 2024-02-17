@@ -35,20 +35,16 @@ public class Caixa {
     public void finalizarVenda() {
         List<Item> itens = new ArrayList<>();
 
-        for (Produto produto : this.venda.getListaItens()) {
-            Item item = new Item(produto, 1);  // Assumindo que a quantidade desejada é 1
+        for (Item produto : this.venda.getListaItens()) {
+            Item item = new Item(produto.getProduto(), produto.getQuantidadeItem());
             itens.add(item);
         }
 
         NotaFiscal nota = new NotaFiscal(this.idCaixa, this.funcionario, itens);
         nota.gerarNota(this.venda);
 
-        // Reiniciar a venda ou definir como null
         this.venda = null;
     }
-
-
-
 
 }
 

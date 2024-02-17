@@ -105,6 +105,24 @@ public class RepositorioVenda {
         }
     }
 
+    public void idVendaWriter(String id) {
+        String path = "src/supermercado/arquivos/id.txt";
+        String txt[] = new String[1];
+
+        txt[0] = id;
+
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(path))) {
+            for (String linha : txt) {
+                if (linha != null) {
+                    bw.write(linha);
+                    bw.newLine();
+                }
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public void updateWriter() {
         String path = "src/supermercado/arquivos/venda.txt";
         String txt[] = new String[1000];

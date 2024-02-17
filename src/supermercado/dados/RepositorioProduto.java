@@ -1,8 +1,6 @@
 package supermercado.dados;
 
-import supermercado.dados.load.LoadLogin;
 import supermercado.dados.load.LoadProduto;
-import supermercado.negocio.beans.Funcionario;
 import supermercado.negocio.beans.Produto;
 
 import java.io.*;
@@ -125,6 +123,8 @@ public class RepositorioProduto {
                 produtos[i].setCategoriaProd(categoria);
                 Double valor = scanner.nextDouble();
                 produtos[i].setValorProd(valor);
+                int quantidade = scanner.nextInt();
+                produtos[i].setQuantidadeEstoque(quantidade);
             }
         }
         updateWriter();

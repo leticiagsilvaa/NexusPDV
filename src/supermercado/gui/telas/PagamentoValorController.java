@@ -14,6 +14,7 @@ import supermercado.gui.util.Alerts;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class PagamentoValorController {
@@ -36,6 +37,7 @@ public class PagamentoValorController {
 
 
     public void btRetirar() throws IOException {
+        DecimalFormat df = new DecimalFormat("0.00");
         Double totalPago = Double.parseDouble(txt.getText());
         Double total = Double.parseDouble(lbl.getText());
         Double subtotal = total - totalPago;
@@ -44,10 +46,10 @@ public class PagamentoValorController {
         if(Double.parseDouble(lbl.getText()) < 0.0) {
             Alerts.showAlert("INFORMAÇÕES", "Pagamento efetuado", "Imprimindo nota fiscal", Alert.AlertType.INFORMATION);
             Double troco = totalPago - total;
-            String texto = String.valueOf(troco + "$");
-            Alerts.showAlert("TROCO", "Pagamento efetuado", texto, Alert.AlertType.INFORMATION);
-                    //imprimir nota fiscal
-                    abrirNovaTela();
+            String trocoFormatado = df.format(troco);
+            String texto = String.valueOf(trocoFormatado + "$");
+            Alerts.showAlert("Pagamento efetuado", "TROCO:", texto, Alert.AlertType.INFORMATION);
+            abrirNovaTela();
         }
 
     }
@@ -66,7 +68,7 @@ public class PagamentoValorController {
 
     private void abrirNovaTela() throws IOException {
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("venda.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("notaFiscal.fxml"));
         Parent root = loader.load();
 
         Scene scene = new Scene(root);

@@ -1,6 +1,7 @@
 package supermercado.dados;
 
 import supermercado.dados.load.LoadLogin;
+import supermercado.negocio.beans.Funcionario;
 import supermercado.negocio.beans.Login;
 
 import java.io.*;
@@ -27,11 +28,10 @@ public class RepositorioLogin {
     }
 
 
-    public Login getAll() {
-        System.out.println(Arrays.toString(logins));
+    public Login[] getAll() {
         for (Login log : logins) {
-            if (log != null && quantidadeLogins > 0) {
-                return log;
+            if (log != null) {
+                return Arrays.copyOf(logins, quantidadeLogins);
             }
         }
         return null;
@@ -99,9 +99,9 @@ public class RepositorioLogin {
         }
 
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(path))) {
-            for (String linha : txt) {
-                if (linha != null) {
-                    bw.write(linha);
+            for(int i =0; i < txt.length -1; i++) {
+                if (txt[i] != null) {
+                    bw.write(txt[i]);
                     bw.newLine();
                 }
             }

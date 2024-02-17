@@ -5,9 +5,9 @@ import java.util.List;
 import supermercado.negocio.exceptions.PagamentoException;
 public class Venda {
 
-    private final int idVenda;
+    private int idVenda;
     private static int totalIdVenda;
-    private List<Produto> listaItens;
+    private List<Item> listaItens;
     private Double subtotal = 0.0;
     private Double troco;
     private Pagamento pagamento;
@@ -29,7 +29,7 @@ public class Venda {
         this.listaItens = listaItens;
     }
 
-    public List<Produto> getListaItens() {
+    public List<Item> getListaItens() {
         return listaItens;
     }
 
@@ -41,19 +41,20 @@ public class Venda {
         return subtotal;
     }
 
-    public void setSubtotal() {
+    public void setSubtotal(Double subtotal) {
         this.subtotal = subtotal;
     }
 
     public Double calcularTotal() {
-        // Descontos ou outros cálculos podem ser adicionados aqui
-        return subtotal;
+        Double total = 0.0;
+        for(Item item: listaItens){
+            total += item.getProduto().getValorProd() * item.getQuantidadeItem();
+        }
+        return total;
     }
 
     public void adicionarItemLista(Produto produto, int quantidade) {
-        Item item = new Item(produto, quantidade);
-        listaItens.add(item.getProduto());
-        subtotal += item.calcularValorParcial();
+        listaItens.add(new Item(produto, quantidade));
     }
 
     public void removerItem(Item item) {

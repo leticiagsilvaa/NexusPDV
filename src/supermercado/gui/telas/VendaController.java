@@ -12,15 +12,16 @@ import supermercado.dados.RepositorioFuncionario;
 import supermercado.dados.RepositorioProduto;
 import supermercado.dados.RepositorioVenda;
 import supermercado.negocio.beans.Funcionario;
+import supermercado.negocio.beans.Item;
 import supermercado.negocio.beans.Produto;
 import supermercado.negocio.beans.Venda;
 
 import java.io.*;
 import java.text.DecimalFormat;
 
-
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class VendaController {
@@ -67,16 +68,40 @@ public class VendaController {
     }
 
     public void onBtFinalizarAction() {
+        Locale.setDefault(Locale.US);
         try {
-            String preco = lbl3.getText();
+            String preco = lbl3.getText().trim();
             RepositorioVenda.getInstance().precoTotalWriter(preco);
+            if (preco.isEmpty()) {
+                try {
+                    throw new RuntimeException("Texto vazio");
+                } catch (RuntimeException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            Double precoAjustado = Double.parseDouble(preco);
+
+            if (precoAjustado <= 0) {
+                System.out.println("O preço não é válido.");
+                return;
+            }
+
+            int id = lerId();
+            System.out.println(id);
+            Venda venda = RepositorioVenda.getInstance().getOne(id);
+            //venda.setSubtotal(precoAjustado);
             abrirNovaTela("pagamento.fxml");
+
+        } catch (NumberFormatException e) {
+            System.out.println("Formato inválido para o preço.");
+            e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     public void searchProductCode(int codigoProduto) {
+        Locale.setDefault(Locale.US);
         DecimalFormat df = new DecimalFormat("0.00");
 
         Produto produto = RepositorioProduto.getInstance().getOne(codigoProduto);
@@ -85,11 +110,11 @@ public class VendaController {
         int codigoFuncionario = dadosArquivo[1];
         System.out.println(id + "" + codigoFuncionario);
 
-        Funcionario funcionario = RepositorioFuncionario.getInstance().getOne(codigoFuncionario);
-        List<Produto> itens = new ArrayList<>();
-        itens.add(produto);
-
         String quantidade = txt1.getText();
+
+        Funcionario funcionario = RepositorioFuncionario.getInstance().getOne(codigoFuncionario);
+        List<Item> itens = new ArrayList<>();
+        itens.add(new Item(produto, Integer.parseInt(quantidade)));
 
         if (produto.getQuantidadeEstoque() < Integer.parseInt(quantidade)) {
             throw new RuntimeException("Venda impossível");
@@ -105,7 +130,8 @@ public class VendaController {
         lbl4.setText(itens.toString());
 
         Venda venda = new Venda(id, funcionario);
-        venda.setListaItens(itens);
+        RepositorioVenda.getInstance().idVendaWriter(String.valueOf(venda.getIdVenda()));
+        venda.adicionarItemLista(produto, Integer.parseInt(quantidade));
     }
 
     private int[] lerArquivo(){
@@ -120,6 +146,20 @@ public class VendaController {
             System.err.println("Arquivo não encontrado: ");
             e.printStackTrace();
             return null;
+        }
+    }
+
+    private int lerId(){
+        try {
+            Scanner scanner = new Scanner(new File("src/supermercado/arquivos/id.txt"));
+            int id = scanner.nextInt();
+            scanner.close();
+            int i = id;
+            return i;
+        } catch (FileNotFoundException e) {
+            System.err.println("Arquivo não encontrado: ");
+            e.printStackTrace();
+            return 0;
         }
     }
 

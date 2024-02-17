@@ -7,8 +7,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import org.w3c.dom.Text;
 import supermercado.gui.util.Alerts;
 import supermercado.negocio.Fachada;
 
@@ -22,26 +24,11 @@ public class fecharCaixaController {
     private Button btFinalizar;
 
     @FXML
-    private AnchorPane txt1;
-
-    @FXML
-    private AnchorPane txt2;
-
-    @FXML
-    private AnchorPane txt3;
-
-    @FXML
-    private AnchorPane txt4;
-
-    @FXML
     private PasswordField password;
 
     public void onBtCadastrarAction() {
         try {
-            //pegar a senha do funcionario ativo
-            String pass = String.valueOf(password);
-            //comparar com a senha digitada
-            //Se feito com sucesso
+            String pass = password.getText();
             String texto = "Caixa finalizado";
 
             Alerts.showAlert("INFORMAÇÕES", "CAIXA FINALIZADO", texto, Alert.AlertType.INFORMATION);

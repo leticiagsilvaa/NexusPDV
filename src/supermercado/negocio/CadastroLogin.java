@@ -61,7 +61,4 @@ public class CadastroLogin {
         this.repositorio.delete(num);
     }
 
-    public void update(int codigo) throws NaoExisteException {
-        this.repositorio.update(codigo);
-    }
 }

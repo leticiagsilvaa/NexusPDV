@@ -3,6 +3,7 @@ package supermercado.dados;
 import supermercado.dados.load.LoadFuncionario;
 import supermercado.negocio.beans.Funcionario;
 import supermercado.negocio.beans.Login;
+import supermercado.negocio.beans.Produto;
 
 import java.io.*;
 import java.util.Arrays;
@@ -24,6 +25,16 @@ public class RepositorioFuncionario {
         }
         return instance;
     }
+
+    public Funcionario[] getAll() {
+        for (Funcionario f : funcionarios) {
+            if (f != null) {
+                return Arrays.copyOf(funcionarios, quantidadeFuncionarios);
+            }
+        }
+        return null;
+    }
+
 
     public Funcionario getOne(int codigo) {
         for (int i = 0; i < funcionarios.length; i++) {
@@ -82,7 +93,7 @@ public class RepositorioFuncionario {
 
     public void updateWriter() {
         String path = "src/supermercado/arquivos/funcionarios.txt";
-        String txt[] = new String[50];
+        String txt[] = new String[150];
 
         int numeroLinha = 0;
 
@@ -97,9 +108,9 @@ public class RepositorioFuncionario {
         }
 
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(path))) {
-            for (String linha : txt) {
-                if (linha != null) {
-                    bw.write(linha);
+            for (int i =0; i < txt.length -1; i++) {
+                if (txt[i] != null) {
+                    bw.write(txt[i]);
                     bw.newLine();
                 }
             }
